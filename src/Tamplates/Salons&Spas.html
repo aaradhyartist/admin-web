@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxeGlow | Salon & Spa Management Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap");
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      h1,
+      h2,
+      .font-serif {
+        font-family: "Playfair Display", serif;
+      }
+
+      .view-section {
+        display: none;
+      }
+      .view-section.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-[#FCFAFA] text-slate-800">
+    <nav
+      class="bg-rose-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-2xl"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-2xl tracking-widest uppercase"
+          >Luxe<span class="text-rose-300">Glow</span></span
+        >
+      </div>
+      <div class="flex gap-3">
+        <button
+          onclick="switchView('client')"
+          class="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 rounded-full text-xs font-bold transition uppercase tracking-widest"
+        >
+          Client Website
+        </button>
+        <button
+          onclick="switchView('admin')"
+          class="bg-rose-300 hover:bg-rose-400 px-4 py-2 rounded-full text-xs font-bold text-rose-950 transition uppercase tracking-widest"
+        >
+          Manager Panel
+        </button>
+      </div>
+    </nav>
+
+    <main id="client-view" class="view-section active">
+      <header
+        class="relative h-[85vh] flex items-center justify-center text-center overflow-hidden"
+      >
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <img
+          src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&q=80&w=2000"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="relative z-20 px-6">
+          <span
+            class="text-rose-200 uppercase tracking-[0.3em] text-sm mb-4 block"
+            >Est. 2015 • Luxury Wellness</span
+          >
+          <h1 class="text-6xl md:text-8xl text-white mb-8">
+            Elevate Your Beauty.
+          </h1>
+          <p
+            class="text-rose-50 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed italic"
+          >
+            Experience the ultimate sanctuary of relaxation and professional
+            hair artistry.
+          </p>
+          <a
+            href="#booking"
+            class="bg-rose-300 text-rose-950 px-10 py-5 rounded-full font-bold text-sm tracking-widest hover:bg-white transition shadow-2xl uppercase"
+            >Book My Transformation</a
+          >
+        </div>
+      </header>
+
+      <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-3 gap-16">
+          <div class="lg:col-span-1">
+            <h2 class="text-5xl mb-6">Signature Treatments</h2>
+            <p class="text-slate-500 leading-relaxed mb-8">
+              Each service includes a personalized consultation and a signature
+              scalp massage.
+            </p>
+            <div class="space-y-6">
+              <div
+                class="border-b border-rose-100 pb-4 flex justify-between items-end"
+              >
+                <div>
+                  <h4 class="font-bold text-lg">Balayage & Styling</h4>
+                  <p class="text-sm text-slate-400 italic">
+                    Starting from 2.5 hours
+                  </p>
+                </div>
+                <span class="text-rose-900 font-serif text-xl">$180+</span>
+              </div>
+              <div
+                class="border-b border-rose-100 pb-4 flex justify-between items-end"
+              >
+                <div>
+                  <h4 class="font-bold text-lg">HydraFacial Glow</h4>
+                  <p class="text-sm text-slate-400 italic">60 Minutes</p>
+                </div>
+                <span class="text-rose-900 font-serif text-xl">$120</span>
+              </div>
+              <div
+                class="border-b border-rose-100 pb-4 flex justify-between items-end"
+              >
+                <div>
+                  <h4 class="font-bold text-lg">Silk Press Finish</h4>
+                  <p class="text-sm text-slate-400 italic">90 Minutes</p>
+                </div>
+                <span class="text-rose-900 font-serif text-xl">$85</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-2 grid md:grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=800"
+              class="rounded-3xl h-full object-cover shadow-lg"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800"
+              class="rounded-3xl h-full object-cover shadow-lg mt-8"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="py-24 bg-rose-50">
+        <div
+          class="max-w-4xl mx-auto px-6 bg-white rounded-[3rem] shadow-xl overflow-hidden flex flex-col md:flex-row"
+        >
+          <div class="p-12 flex-1">
+            <h2 class="text-4xl mb-8">Secure Your Spot</h2>
+            <form
+              class="space-y-6"
+              onsubmit="event.preventDefault(); alert('Booking confirmed! Check your SMS.');"
+            >
+              <div>
+                <label
+                  class="text-[10px] uppercase tracking-widest font-bold text-slate-400 ml-2"
+                  >Select Stylist</label
+                >
+                <select
+                  class="w-full mt-2 p-4 bg-slate-50 border-none rounded-2xl outline-none focus:ring-2 focus:ring-rose-200"
+                >
+                  <option>Any Available Professional</option>
+                  <option>Elena (Master Stylist)</option>
+                  <option>Marcus (Skin Specialist)</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <input
+                  type="date"
+                  class="p-4 bg-slate-50 border-none rounded-2xl outline-none"
+                />
+                <input
+                  type="time"
+                  class="p-4 bg-slate-50 border-none rounded-2xl outline-none"
+                />
+              </div>
+              <button
+                class="w-full bg-rose-950 text-white py-5 rounded-2xl font-bold tracking-widest hover:bg-rose-900 transition shadow-lg"
+              >
+                REQUEST APPOINTMENT
+              </button>
+            </form>
+          </div>
+          <div
+            class="md:w-64 bg-rose-950 text-rose-100 p-12 flex flex-col justify-center"
+          >
+            <p class="text-sm italic mb-4">
+              "A salon is a place where you reinvent yourself."
+            </p>
+            <div class="h-px bg-rose-800 my-6"></div>
+            <p
+              class="text-xs uppercase tracking-widest font-bold text-rose-300"
+            >
+              Opening Hours
+            </p>
+            <p class="text-sm mt-2">Tue - Sun: 9AM - 8PM</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-rose-950 text-white pt-20 pb-10">
+        <div
+          class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-rose-900 pb-16"
+        >
+          <div class="space-y-6">
+            <span class="font-serif text-3xl tracking-widest uppercase"
+              >Luxe<span class="text-rose-300">Glow</span></span
+            >
+            <p class="text-rose-100/60 text-sm leading-relaxed">
+              A sanctuary of beauty and wellness dedicated to providing a
+              premium experience that rejuvenates your soul.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-rose-300 hover:text-rose-950 transition"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-rose-300 hover:text-rose-950 transition"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-rose-300 hover:text-rose-950 transition"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-rose-300 uppercase tracking-widest text-xs mb-6"
+            >
+              Explore
+            </h4>
+            <ul class="space-y-4 text-sm text-rose-100/80">
+              <li>
+                <a href="#" class="hover:text-white transition">Our Services</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Master Stylists</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Gift Vouchers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-rose-300 uppercase tracking-widest text-xs mb-6"
+            >
+              Visit Us
+            </h4>
+            <ul class="space-y-4 text-sm text-rose-100/80">
+              <li class="flex gap-3">
+                <i class="fas fa-map-marker-alt text-rose-300"></i>
+                <span>123 Beauty Blvd, <br />Beverly Hills, CA 90210</span>
+              </li>
+              <li class="flex gap-3 italic font-serif text-lg text-white">
+                <i
+                  class="fas fa-phone-alt text-rose-300 text-sm self-center"
+                ></i>
+                +1 (555) 123-4567
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-rose-300 uppercase tracking-widest text-xs mb-6"
+            >
+              Stay Inspired
+            </h4>
+            <p class="text-xs text-rose-100/60 mb-4">
+              Join our list for exclusive beauty tips and seasonal offers.
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Email Address"
+                class="bg-white/5 border border-white/10 p-3 rounded-l-xl text-sm w-full outline-none focus:border-rose-300"
+              />
+              <button
+                class="bg-rose-300 text-rose-950 px-4 rounded-r-xl hover:bg-white transition"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto px-6 pt-10 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-[10px] text-rose-100/40 uppercase tracking-[0.2em]">
+            &copy; 2025 LuxeGlow Salon Systems • Developed for Demo Purposes
+          </p>
+          <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2 grayscale opacity-50">
+              <i class="fab fa-cc-visa text-2xl"></i>
+              <i class="fab fa-cc-mastercard text-2xl"></i>
+              <i class="fab fa-cc-apple-pay text-2xl"></i>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <main id="admin-view" class="view-section">
+      <div class="flex h-[calc(100vh-72px)] overflow-hidden">
+        <aside class="w-80 bg-white border-r p-8 hidden lg:flex flex-col">
+          <div class="mb-12">
+            <p
+              class="text-[10px] font-black text-rose-950/30 uppercase tracking-[0.2em] mb-8"
+            >
+              Admin Console
+            </p>
+            <nav class="space-y-4">
+              <a
+                href="#"
+                class="flex items-center gap-4 text-rose-950 font-bold bg-rose-50 p-4 rounded-2xl"
+              >
+                <i class="fas fa-calendar-alt"></i> Appointment Book
+              </a>
+              <a
+                href="#"
+                class="flex items-center gap-4 text-slate-400 hover:text-rose-950 p-4 transition"
+              >
+                <i class="fas fa-users"></i> Staff Directory
+              </a>
+              <a
+                href="#"
+                class="flex items-center gap-4 text-slate-400 hover:text-rose-950 p-4 transition"
+              >
+                <i class="fas fa-magic"></i> Service Menu
+              </a>
+              <a
+                href="#"
+                class="flex items-center gap-4 text-slate-400 hover:text-rose-950 p-4 transition"
+              >
+                <i class="fas fa-gift"></i> Loyalty & Coupons
+              </a>
+            </nav>
+          </div>
+          <div class="mt-auto p-6 bg-slate-900 rounded-[2rem] text-white">
+            <p
+              class="text-xs text-rose-300 font-bold uppercase tracking-widest mb-2"
+            >
+              Pro Tip
+            </p>
+            <p class="text-xs font-light leading-relaxed">
+              Send an automated SMS reminder to reduce no-shows by 40%.
+            </p>
+          </div>
+        </aside>
+
+        <div class="flex-1 overflow-y-auto p-6 md:p-12">
+          <div class="flex justify-between items-end mb-12">
+            <div>
+              <h1 class="text-4xl font-serif">Salon Overview</h1>
+              <p class="text-slate-400 mt-2">Today: Thursday, Oct 24th</p>
+            </div>
+            <div
+              class="bg-white px-6 py-3 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4"
+            >
+              <div class="text-right">
+                <p class="text-[10px] font-bold text-slate-400">
+                  DAILY REVENUE
+                </p>
+                <p class="text-xl font-bold">$1,450.00</p>
+              </div>
+              <i class="fas fa-chart-line text-rose-400 text-2xl"></i>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div
+              class="bg-rose-950 text-white p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden"
+            >
+              <i
+                class="fas fa-cut absolute -right-4 -bottom-4 text-8xl text-white/5 -rotate-12"
+              ></i>
+              <p
+                class="text-rose-300 text-xs font-bold tracking-widest uppercase mb-2"
+              >
+                Staff Active
+              </p>
+              <h3 class="text-4xl font-bold italic">6 / 8</h3>
+              <p class="text-rose-200/60 text-xs mt-4">2 Stylists on break</p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100"
+            >
+              <p
+                class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-2"
+              >
+                Total Bookings
+              </p>
+              <h3 class="text-4xl font-bold italic">18</h3>
+              <p class="text-green-500 text-xs mt-4 font-bold">
+                +4 from last week
+              </p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100"
+            >
+              <p
+                class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-2"
+              >
+                Walk-ins
+              </p>
+              <h3 class="text-4xl font-bold italic">3</h3>
+              <p class="text-rose-400 text-xs mt-4 font-bold italic">
+                Wait time: 15m
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div class="p-8 border-b flex justify-between items-center">
+              <h3 class="font-bold text-xl">Today's Schedule</h3>
+              <button
+                class="text-rose-600 text-sm font-bold border border-rose-100 px-4 py-2 rounded-full"
+              >
+                Filter by Stylist
+              </button>
+            </div>
+            <div class="p-4 md:p-8">
+              <div class="space-y-6">
+                <div
+                  class="flex items-center gap-6 p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-rose-200 transition group"
+                >
+                  <div class="text-center w-20">
+                    <p class="font-black text-rose-950">14:00</p>
+                    <p class="text-[10px] text-slate-400 uppercase font-bold">
+                      PM
+                    </p>
+                  </div>
+                  <div class="h-12 w-px bg-slate-200"></div>
+                  <div class="flex-1">
+                    <p class="font-bold">Sophia Martinez</p>
+                    <p class="text-xs text-slate-500 italic">
+                      Full Foil Highlights + Blowout
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-[10px] font-bold text-slate-400 mb-1">
+                      STYLIST
+                    </p>
+                    <span
+                      class="bg-rose-100 text-rose-700 px-3 py-1 rounded-full text-[10px] font-bold"
+                      >ELENA</span
+                    >
+                  </div>
+                  <div id="app-btn-1">
+                    <button
+                      onclick="checkIn(1)"
+                      class="bg-rose-950 text-white px-6 py-2 rounded-xl text-xs font-bold hover:scale-105 transition"
+                    >
+                      Check In
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="flex items-center gap-6 p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-rose-200 transition group"
+                >
+                  <div class="text-center w-20">
+                    <p class="font-black text-rose-950">15:30</p>
+                    <p class="text-[10px] text-slate-400 uppercase font-bold">
+                      PM
+                    </p>
+                  </div>
+                  <div class="h-12 w-px bg-slate-200"></div>
+                  <div class="flex-1">
+                    <p class="font-bold">Jordan Reed</p>
+                    <p class="text-xs text-slate-500 italic">
+                      Beard Trim & Facial
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-[10px] font-bold text-slate-400 mb-1">
+                      STYLIST
+                    </p>
+                    <span
+                      class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold"
+                      >MARCUS</span
+                    >
+                  </div>
+                  <div id="app-btn-2">
+                    <button
+                      onclick="checkIn(2)"
+                      class="bg-rose-950 text-white px-6 py-2 rounded-xl text-xs font-bold hover:scale-105 transition"
+                    >
+                      Check In
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function switchView(view) {
+        document
+          .querySelectorAll(".view-section")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById(view + "-view").classList.add("active");
+        window.scrollTo(0, 0);
+      }
+
+      function checkIn(id) {
+        const btn = document.getElementById("app-btn-" + id);
+        btn.innerHTML = `<span class="bg-green-100 text-green-700 px-4 py-2 rounded-xl text-xs font-bold border border-green-200"><i class="fas fa-check mr-2"></i>IN CHAIR</span>`;
+      }
+    </script>
+  </body>
+</html>

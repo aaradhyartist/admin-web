@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerPulse | Gym Management Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+        
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        .bg-orange-gradient { background: linear-gradient(135deg, #ff6b00 0%, #ff3d00 100%); }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <nav class="bg-zinc-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 border-b border-white/10">
+        <div class="flex items-center gap-2">
+            <span class="font-bebas text-3xl tracking-wider text-orange-500">POWER<span class="text-white">PULSE</span></span>
+        </div>
+        <div class="flex gap-3">
+            <button onclick="switchView('member')" class="bg-white/5 hover:bg-white/10 border border-white/20 px-4 py-2 rounded-lg text-xs font-bold transition uppercase">Member View</button>
+            <button onclick="switchView('admin')" class="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg text-xs font-bold text-white transition uppercase">Owner Dashboard</button>
+        </div>
+    </nav>
+
+    <main id="member-view" class="view-section active">
+        <header class="relative h-screen flex items-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent z-10"></div>
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
+            <div class="relative z-20 px-8 max-w-4xl">
+                <h1 class="font-bebas text-7xl md:text-9xl leading-none mb-6">NO EXCUSES.<br><span class="text-orange-500">JUST RESULTS.</span></h1>
+                <p class="text-xl text-zinc-300 mb-10 max-w-lg">Premium equipment, expert trainers, and a community that pushes you to be your absolute best.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#plans" class="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-xl uppercase italic">Join Now</a>
+                    <a href="#classes" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition uppercase italic">View Schedule</a>
+                </div>
+            </div>
+        </header>
+
+        <section id="classes" class="py-24 bg-zinc-950 px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <h2 class="font-bebas text-5xl italic tracking-wide">Live Class Schedule</h2>
+                        <div class="w-20 h-2 bg-orange-600 mt-2"></div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 group hover:border-orange-500 transition-all duration-500">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-orange-600 text-xs font-bold px-3 py-1 rounded">HIIT</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">Morning Blast</h3>
+                                <span class="text-orange-500 font-bold">06:00 AM</span>
+                            </div>
+                            <p class="text-zinc-400 text-sm mb-6">High intensity interval training designed to burn maximum calories.</p>
+                            <button onclick="alert('Spot Reserved!')" class="w-full bg-white text-black py-3 rounded-xl font-bold hover:bg-orange-500 transition">Reserve Spot</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 group hover:border-orange-500 transition-all duration-500">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1599058917233-35833f3b1622?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-blue-600 text-xs font-bold px-3 py-1 rounded">STRENGTH</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">Power Lifting</h3>
+                                <span class="text-orange-500 font-bold">05:30 PM</span>
+                            </div>
+                            <p class="text-zinc-400 text-sm mb-6">Master the big three lifts with our pro coaching staff.</p>
+                            <button onclick="alert('Spot Reserved!')" class="w-full bg-white text-black py-3 rounded-xl font-bold hover:bg-orange-500 transition">Reserve Spot</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 group hover:border-orange-500 transition-all duration-500">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-purple-600 text-xs font-bold px-3 py-1 rounded">YOGA</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-2xl font-bold">Zen Flow</h3>
+                                <span class="text-orange-500 font-bold">07:00 PM</span>
+                            </div>
+                            <p class="text-zinc-400 text-sm mb-6">Recover and stretch in our temperature controlled studio.</p>
+                            <button onclick="alert('Spot Reserved!')" class="w-full bg-white text-black py-3 rounded-xl font-bold hover:bg-orange-500 transition">Reserve Spot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-zinc-900 py-16 px-8 border-t border-white/10 text-center">
+            <h2 class="font-bebas text-4xl mb-6">READY TO START YOUR JOURNEY?</h2>
+            <p class="text-zinc-500 mb-8 max-w-xl mx-auto">123 Muscle Way, Iron City. Open 24/7 for All Members.</p>
+            <div class="flex justify-center gap-6 text-2xl text-orange-500">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </footer>
+    </main>
+
+    <main id="admin-view" class="view-section">
+        <div class="flex h-[calc(100vh-72px)] overflow-hidden">
+            <aside class="w-72 bg-zinc-950 border-r border-zinc-800 p-6 hidden lg:flex flex-col">
+                <nav class="space-y-2 flex-1">
+                    <p class="text-[10px] text-zinc-600 font-bold uppercase tracking-widest mb-4">Main Menu</p>
+                    <a href="#" class="flex items-center gap-4 bg-orange-600/10 text-orange-500 p-4 rounded-2xl font-bold">
+                        <i class="fas fa-chart-pie"></i> Gym Overview
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-zinc-500 hover:text-white p-4 transition">
+                        <i class="fas fa-id-card"></i> Member Access
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-zinc-500 hover:text-white p-4 transition">
+                        <i class="fas fa-calendar-alt"></i> Class Manager
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-zinc-500 hover:text-white p-4 transition">
+                        <i class="fas fa-dumbbell"></i> Equipment Log
+                    </a>
+                </nav>
+                <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800">
+                    <p class="text-xs text-zinc-500">Logged in as</p>
+                    <p class="font-bold">Head Coach Mark</p>
+                </div>
+            </aside>
+
+            <div class="flex-1 overflow-y-auto bg-black p-8">
+                <div class="flex justify-between items-center mb-10">
+                    <h1 class="text-3xl font-bold">Floor Overview</h1>
+                    <div class="flex gap-2">
+                        <span class="bg-zinc-900 border border-zinc-800 px-4 py-2 rounded-xl text-xs font-bold">
+                            <i class="fas fa-circle text-green-500 animate-pulse mr-2"></i> SYSTEM LIVE
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+                    <div class="bg-zinc-900 p-6 rounded-3xl border border-zinc-800">
+                        <p class="text-zinc-500 text-xs font-bold uppercase">Active In-Gym</p>
+                        <h3 class="text-4xl font-bebas mt-2">124</h3>
+                        <p class="text-orange-500 text-xs mt-2 italic">84% Capacity</p>
+                    </div>
+                    <div class="bg-zinc-900 p-6 rounded-3xl border border-zinc-800">
+                        <p class="text-zinc-500 text-xs font-bold uppercase">New Memberships</p>
+                        <h3 class="text-4xl font-bebas mt-2">18</h3>
+                        <p class="text-green-500 text-xs mt-2 font-bold"><i class="fas fa-arrow-up"></i> This week</p>
+                    </div>
+                    <div class="bg-zinc-900 p-6 rounded-3xl border border-zinc-800">
+                        <p class="text-zinc-500 text-xs font-bold uppercase">Total Revenue</p>
+                        <h3 class="text-4xl font-bebas mt-2">$8.4K</h3>
+                        <p class="text-zinc-500 text-xs mt-2">October 2024</p>
+                    </div>
+                    <div class="bg-zinc-900 p-6 rounded-3xl border border-zinc-800">
+                        <p class="text-zinc-500 text-xs font-bold uppercase">Alerts</p>
+                        <h3 class="text-4xl font-bebas mt-2 text-red-500">2</h3>
+                        <p class="text-red-500/60 text-xs mt-2 italic font-bold">Overdue payments</p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="bg-zinc-900 rounded-3xl border border-zinc-800 overflow-hidden">
+                        <div class="p-6 border-b border-zinc-800 flex justify-between items-center">
+                            <h3 class="font-bold italic">Real-Time Access Log</h3>
+                            <i class="fas fa-fingerprint text-zinc-700"></i>
+                        </div>
+                        <div class="p-4 space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-black rounded-2xl">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold">JD</div>
+                                    <div>
+                                        <p class="font-bold text-sm">John Doe</p>
+                                        <p class="text-[10px] text-green-500 font-bold uppercase">Membership Active</p>
+                                    </div>
+                                </div>
+                                <span class="text-zinc-500 text-[10px]">Just now</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-black rounded-2xl">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold">AM</div>
+                                    <div>
+                                        <p class="font-bold text-sm">Alice Miller</p>
+                                        <p class="text-[10px] text-red-500 font-bold uppercase">Expired / Denied</p>
+                                    </div>
+                                </div>
+                                <button onclick="alert('Access Granted Manually')" class="bg-zinc-800 px-3 py-1 rounded-lg text-[10px] font-bold">GRANT ACCESS</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-900 rounded-3xl border border-zinc-800 p-8">
+                        <h3 class="font-bold italic mb-6">Upcoming Class Capacity</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-2">
+                                    <span>Morning HIIT (06:00 AM)</span>
+                                    <span class="text-orange-500">28 / 30 Booked</span>
+                                </div>
+                                <div class="w-full bg-black h-2 rounded-full overflow-hidden">
+                                    <div class="bg-orange-500 h-full w-[95%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-2">
+                                    <span>Power Yoga (07:00 PM)</span>
+                                    <span class="text-blue-500">12 / 20 Booked</span>
+                                </div>
+                                <div class="w-full bg-black h-2 rounded-full overflow-hidden">
+                                    <div class="bg-blue-500 h-full w-[60%]"></div>
+                                </div>
+                            </div>
+                            <button class="w-full py-4 bg-zinc-800 rounded-2xl text-white font-bold text-sm hover:bg-orange-600 transition mt-4">
+                                Manage Schedules
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(view + '-view').classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>

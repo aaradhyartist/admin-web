@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Kitchen Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="bg-yellow-400 text-gray-900 py-24">
+    <div class="container mx-auto text-center px-4">
+      <h1 class="text-5xl font-bold mb-4">Cloud Kitchen Express</h1>
+      <p class="text-xl mb-6">Delicious meals delivered fast and fresh</p>
+      <a href="#menu" class="bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">Our Menu</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+          <div class="h-40 bg-gray-200 mb-4"></div>
+          <h3 class="text-xl font-semibold">Cheese Burger</h3>
+          <p class="text-gray-600 mb-2">$5.99</p>
+          <button class="add-to-cart bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+          <div class="h-40 bg-gray-200 mb-4"></div>
+          <h3 class="text-xl font-semibold">Veggie Pizza</h3>
+          <p class="text-gray-600 mb-2">$7.99</p>
+          <button class="add-to-cart bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4 text-center">
+          <div class="h-40 bg-gray-200 mb-4"></div>
+          <h3 class="text-xl font-semibold">Pasta Alfredo</h3>
+          <p class="text-gray-600 mb-2">$6.49</p>
+          <button class="add-to-cart bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ordering Flow / Cart -->
+  <section id="cart" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-center">Your Cart</h2>
+      <div id="cart-items" class="bg-white rounded-lg shadow p-6 max-w-2xl mx-auto">
+        <p class="text-gray-600">No items in cart.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Panel -->
+  <section id="admin" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">Admin Dashboard</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Orders -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-4">Orders</h3>
+          <ul>
+            <li class="flex justify-between items-center mb-2 p-2 border-b">
+              <span>Order #001 - Burger x1</span>
+              <button class="bg-green-400 text-white px-2 py-1 rounded">Completed</button>
+            </li>
+            <li class="flex justify-between items-center mb-2 p-2 border-b">
+              <span>Order #002 - Pizza x2</span>
+              <button class="bg-yellow-400 text-white px-2 py-1 rounded">Preparing</button>
+            </li>
+          </ul>
+        </div>
+        <!-- Menu Management -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-4">Menu Management</h3>
+          <ul>
+            <li class="flex justify-between items-center mb-2 p-2 border-b">
+              <span>Cheese Burger</span>
+              <button class="bg-red-400 text-white px-2 py-1 rounded">Delete</button>
+            </li>
+            <li class="flex justify-between items-center mb-2 p-2 border-b">
+              <span>Veggie Pizza</span>
+              <button class="bg-red-400 text-white px-2 py-1 rounded">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kitchen Order Screen -->
+  <section id="kitchen" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">Kitchen Orders</h2>
+      <ul class="max-w-2xl mx-auto bg-white rounded-lg shadow p-6 space-y-4">
+        <li class="flex justify-between items-center p-2 border-b">
+          <span>Order #001 - Burger x1</span>
+          <button class="bg-green-400 text-white px-3 py-1 rounded">Ready</button>
+        </li>
+        <li class="flex justify-between items-center p-2 border-b">
+          <span>Order #002 - Pizza x2</span>
+          <button class="bg-yellow-400 text-white px-3 py-1 rounded">Cooking</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Customer Contact Section -->
+  <section id="contact" class="py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+      <p class="mb-4">123 Cloud Kitchen St, Food City</p>
+      <div class="flex justify-center gap-4">
+        <a href="tel:+1234567890" class="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition">Call</a>
+        <a href="https://wa.me/1234567890" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-400 transition">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Insights Section -->
+  <section id="insights" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-10">Business Insights</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Top Seller</h3>
+          <div class="h-32 bg-gray-200 flex items-center justify-center">Chart Placeholder</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Orders Today</h3>
+          <div class="h-32 bg-gray-200 flex items-center justify-center">Chart Placeholder</div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Revenue</h3>
+          <div class="h-32 bg-gray-200 flex items-center justify-center">Chart Placeholder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 text-center bg-yellow-400 text-gray-900">
+    <h2 class="text-3xl font-bold mb-6">Build This for My Restaurant</h2>
+    <a href="#contact" class="bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition">Get Started</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    &copy; 2025 Cloud Kitchen Demo
+  </footer>
+
+  <!-- Minimal JavaScript for Cart -->
+  <script>
+    const cartItems = document.getElementById('cart-items');
+    const buttons = document.querySelectorAll('.add-to-cart');
+    let cart = [];
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const itemName = btn.parentElement.querySelector('h3').innerText;
+        const itemPrice = btn.parentElement.querySelector('p').innerText;
+        cart.push({ name: itemName, price: itemPrice });
+        renderCart();
+      });
+    });
+
+    function renderCart() {
+      if(cart.length === 0){
+        cartItems.innerHTML = '<p class="text-gray-600">No items in cart.</p>';
+        return;
+      }
+      cartItems.innerHTML = '';
+      cart.forEach((item, index) => {
+        const li = document.createElement('div');
+        li.className = "flex justify-between mb-2 p-2 border-b";
+        li.innerHTML = `<span>${item.name} - ${item.price}</span> <button onclick="removeItem(${index})" class="bg-red-400 text-white px-2 py-1 rounded">Remove</button>`;
+        cartItems.appendChild(li);
+      });
+    }
+
+    function removeItem(index){
+      cart.splice(index,1);
+      renderCart();
+    }
+  </script>
+</body>
+</html>

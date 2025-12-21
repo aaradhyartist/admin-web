@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCore | Healthcare Management Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        .bg-medical { background-color: #f0f9ff; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <nav class="bg-blue-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center gap-2">
+            <div class="bg-cyan-500 p-1.5 rounded-lg">
+                <i class="fas fa-heartbeat text-white"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight">Medi<span class="text-cyan-400">Core</span></span>
+        </div>
+        <div class="flex gap-3">
+            <button onclick="switchView('patient')" class="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 rounded-lg text-sm font-semibold transition">
+                Patient Website
+            </button>
+            <button onclick="switchView('admin')" class="bg-cyan-500 hover:bg-cyan-600 px-4 py-2 rounded-lg text-sm font-bold text-white transition">
+                Staff Dashboard
+            </button>
+        </div>
+    </nav>
+
+    <main id="patient-view" class="view-section active">
+        <header class="relative h-[70vh] flex items-center bg-blue-50 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12 z-20">
+                <div>
+                    <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Compassionate Care</span>
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mt-4 mb-6 leading-tight">Your Health, Our <span class="text-blue-600">Priority.</span></h1>
+                    <p class="text-lg text-slate-600 mb-10">Advanced medical technology combined with a personal touch. Book your appointment online in under 2 minutes.</p>
+                    <div class="flex gap-4">
+                        <a href="#book" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition">Book Appointment</a>
+                        <a href="#services" class="bg-white text-blue-600 border border-blue-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition">Our Services</a>
+                    </div>
+                </div>
+                <div class="hidden md:block relative">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl border-8 border-white">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <p class="text-3xl font-bold text-blue-600">24/7</p>
+                        <p class="text-sm text-gray-500">Emergency Support</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="services" class="py-24 max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold">Our Medical Departments</h2>
+                <p class="text-gray-500 mt-2">World-class treatment across all major specialties.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 hover:border-blue-500 transition text-center group">
+                    <i class="fas fa-stethoscope text-4xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Cardiology</h3>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 hover:border-blue-500 transition text-center group">
+                    <i class="fas fa-brain text-4xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Neurology</h3>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 hover:border-blue-500 transition text-center group">
+                    <i class="fas fa-tooth text-4xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Dental Care</h3>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 hover:border-blue-500 transition text-center group">
+                    <i class="fas fa-baby text-4xl text-blue-500 mb-4 group-hover:scale-110 transition"></i>
+                    <h3 class="font-bold">Pediatrics</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="book" class="py-20 bg-blue-900 text-white">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="bg-white text-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                    <div class="p-10 flex-1">
+                        <h2 class="text-3xl font-bold mb-6">Quick Appointment</h2>
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Booking Request Sent!');">
+                            <input type="text" placeholder="Patient Name" class="w-full p-4 bg-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                            <select class="w-full p-4 bg-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Select Department</option>
+                                <option>General Checkup</option>
+                                <option>Cardiology</option>
+                            </select>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="date" class="p-4 bg-slate-100 rounded-xl">
+                                <input type="time" class="p-4 bg-slate-100 rounded-xl">
+                            </div>
+                            <button class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition">Request Appointment</button>
+                        </form>
+                    </div>
+                    <div class="md:w-72 bg-blue-50 p-10 flex flex-col justify-center border-l">
+                        <h4 class="font-bold mb-4">Emergency Contact</h4>
+                        <p class="text-blue-600 text-2xl font-black mb-2">1-800-MED-CORE</p>
+                        <p class="text-sm text-gray-500">Call this number for immediate ambulance assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="admin-view" class="view-section">
+        <div class="flex h-[calc(100vh-72px)] overflow-hidden">
+            <aside class="w-72 bg-white border-r p-6 hidden lg:block">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Hospital Portal</p>
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center gap-4 bg-blue-50 text-blue-600 p-4 rounded-2xl font-bold">
+                        <i class="fas fa-th-large"></i> Overview
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl transition">
+                        <i class="fas fa-calendar-check"></i> Appointments
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl transition">
+                        <i class="fas fa-user-injured"></i> Patient Records
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl transition">
+                        <i class="fas fa-flask"></i> Lab Results
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-slate-500 hover:bg-slate-50 p-4 rounded-2xl transition">
+                        <i class="fas fa-pills"></i> Pharmacy
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="flex-1 overflow-y-auto p-6 md:p-10">
+                <div class="flex justify-between items-center mb-10">
+                    <div>
+                        <h1 class="text-3xl font-bold italic">Dr. Henderson's Clinic</h1>
+                        <p class="text-slate-500">Welcome back. You have 8 appointments today.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-xl font-bold shadow-lg shadow-blue-200">+ New Record</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-sm font-bold">Today's Patients</p>
+                        <h3 class="text-3xl font-black text-slate-800">42</h3>
+                        <div class="mt-2 text-xs text-green-500 font-bold"><i class="fas fa-caret-up"></i> 15% more than yesterday</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-sm font-bold">Waiting Room</p>
+                        <h3 class="text-3xl font-black text-orange-500">5</h3>
+                        <div class="mt-2 text-xs text-slate-400 font-medium">Avg wait: 12 mins</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-sm font-bold">Surgery Rooms</p>
+                        <h3 class="text-3xl font-black text-blue-600">2/4</h3>
+                        <div class="mt-2 text-xs text-blue-400 font-medium font-bold">Active now</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-sm font-bold">Pending Lab Tests</p>
+                        <h3 class="text-3xl font-black text-slate-800">12</h3>
+                        <div class="mt-2 text-xs text-red-500 font-bold">3 Urgent</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden mb-10">
+                    <div class="p-6 border-b flex justify-between items-center bg-slate-50/50">
+                        <h3 class="font-bold">Incoming Appointments</h3>
+                        <div class="flex gap-2">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-xs font-bold italic">Live Sync ON</span>
+                        </div>
+                    </div>
+                    <table class="w-full text-left">
+                        <thead class="text-[11px] text-slate-400 uppercase font-bold border-b">
+                            <tr>
+                                <th class="px-8 py-4">Patient Info</th>
+                                <th class="px-8 py-4">Time</th>
+                                <th class="px-8 py-4">Reason</th>
+                                <th class="px-8 py-4">Status</th>
+                                <th class="px-8 py-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-5">
+                                    <p class="font-bold">Robert Fox</p>
+                                    <p class="text-xs text-slate-400">ID: #PT-9021</p>
+                                </td>
+                                <td class="px-8 py-5 text-sm font-medium">10:30 AM</td>
+                                <td class="px-8 py-5 text-sm">Chronic Back Pain</td>
+                                <td class="px-8 py-5" id="p-status-1">
+                                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">Waiting</span>
+                                </td>
+                                <td class="px-8 py-5">
+                                    <button onclick="updateClinicStatus(1, 'IN-ROOM')" class="bg-slate-900 text-white px-4 py-1.5 rounded-lg text-xs font-bold">Call Patient</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-5">
+                                    <p class="font-bold">Jenny Wilson</p>
+                                    <p class="text-xs text-slate-400">ID: #PT-8832</p>
+                                </td>
+                                <td class="px-8 py-5 text-sm font-medium">11:15 AM</td>
+                                <td class="px-8 py-5 text-sm">Annual Health Exam</td>
+                                <td class="px-8 py-5" id="p-status-2">
+                                    <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">Scheduled</span>
+                                </td>
+                                <td class="px-8 py-5">
+                                    <button onclick="updateClinicStatus(2, 'IN-ROOM')" class="bg-slate-900 text-white px-4 py-1.5 rounded-lg text-xs font-bold">Call Patient</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-slate-100">
+                        <h3 class="font-bold mb-6 flex items-center gap-2"><i class="fas fa-bell text-red-500"></i> Urgent Lab Alerts</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-red-50 rounded-2xl border border-red-100">
+                                <div>
+                                    <p class="font-bold text-sm text-red-800">Blood Test - Mark Z.</p>
+                                    <p class="text-xs text-red-600 italic font-medium">Critical Glucose Levels</p>
+                                </div>
+                                <button class="text-xs font-bold bg-white text-red-600 px-3 py-1 rounded-lg border border-red-200">Review</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-900 text-white p-8 rounded-3xl">
+                        <h3 class="font-bold mb-4">Inventory Quick Check</h3>
+                        <p class="text-sm text-blue-200 mb-6">Real-time medical supply levels.</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>Surgical Masks</span><span>90%</span></div>
+                                <div class="w-full bg-blue-800 h-1.5 rounded-full"><div class="bg-cyan-400 h-1.5 rounded-full w-[90%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>Vaccines (Flu)</span><span>20%</span></div>
+                                <div class="w-full bg-blue-800 h-1.5 rounded-full"><div class="bg-red-500 h-1.5 rounded-full w-[20%]"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-500 py-12 text-center text-sm">
+        <p>&copy; 2024 MediCore Health Systems. Demo Purposes Only.</p>
+    </footer>
+
+    <script>
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(view + '-view').classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function updateClinicStatus(id, status) {
+            const el = document.getElementById('p-status-' + id);
+            el.innerHTML = `<span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter animate-pulse">${status}</span>`;
+            setTimeout(() => {
+                el.querySelector('span').classList.remove('animate-pulse');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexRetail | Enterprise Commerce Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        .promo-gradient { background: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%); }
+    </style>
+</head>
+<body class="bg-white">
+
+    <div class="bg-slate-900 text-white px-6 py-2 flex justify-between items-center sticky top-0 z-[200]">
+        <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">NexRetail OS v2.4</span>
+        </div>
+        <div class="flex gap-4">
+            <button onclick="switchView('store')" id="btn-store" class="text-xs font-bold bg-blue-600 px-4 py-1.5 rounded-full transition-all">Customer Website</button>
+            <button onclick="switchView('admin')" id="btn-admin" class="text-xs font-bold text-slate-400 px-4 py-1.5 rounded-full hover:text-white transition-all">Admin Dashboard</button>
+        </div>
+    </div>
+
+    <main id="store-view" class="view-section active">
+        <nav class="border-b bg-white/80 backdrop-blur-md sticky top-[44px] z-[100]">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <span class="text-2xl font-black tracking-tighter">NEX<span class="text-blue-600">RETAIL</span></span>
+                <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+                    <a href="#" class="hover:text-blue-600">New Arrivals</a>
+                    <a href="#" class="hover:text-blue-600">Collections</a>
+                    <a href="#" class="hover:text-blue-600">Men</a>
+                    <a href="#" class="hover:text-blue-600">Women</a>
+                    <a href="#" class="hover:text-blue-600">Sale</a>
+                </div>
+                <div class="flex items-center gap-5 text-slate-800">
+                    <i class="fas fa-search cursor-pointer"></i>
+                    <div class="relative">
+                        <i class="fas fa-shopping-cart cursor-pointer"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="relative h-[80vh] bg-slate-100 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 h-full flex items-center grid md:grid-cols-2">
+                <div class="z-10">
+                    <span class="text-blue-600 font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Spring Collection 2025</span>
+                    <h1 class="text-7xl font-black text-slate-900 leading-[1.1] mb-8">Evolve Your <br>Everyday Style.</h1>
+                    <p class="text-slate-500 text-lg mb-10 max-w-md">Sustainable fabrics meets cutting-edge design. Explore our latest drop of premium essentials.</p>
+                    <div class="flex gap-4">
+                        <button class="bg-slate-900 text-white px-10 py-5 rounded-full font-bold hover:bg-blue-600 transition shadow-xl">Shop Collection</button>
+                        <button class="border-2 border-slate-900 px-10 py-5 rounded-full font-bold hover:bg-slate-900 hover:text-white transition">Our Story</button>
+                    </div>
+                </div>
+                <div class="relative hidden md:block">
+                    <img src="https://media.istockphoto.com/id/1333809608/photo/overhead-image-of-people-buying-in-the-large-supermarket.jpg?s=612x612&w=0&k=20&c=TG-7bENeeFW50e4UPNXNbe54pX145sQLzLQGoNGE50c=" class="absolute top-1/2 -translate-y-1/2 right-0 h-[110%] w-[90%] object-cover rounded-[3rem] shadow-2xl">
+                </div>
+            </div>
+        </header>
+
+        <section class="py-24 max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-black mb-12">Shop by Category</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative h-96 group overflow-hidden rounded-[2rem] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1539109132314-34a936ee5586?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h4 class="text-2xl font-bold">Footwear</h4>
+                        <p class="text-sm text-slate-300">120+ Items</p>
+                    </div>
+                </div>
+                <div class="relative h-96 group overflow-hidden rounded-[2rem] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h4 class="text-2xl font-bold">Accessories</h4>
+                        <p class="text-sm text-slate-300">85+ Items</p>
+                    </div>
+                </div>
+                <div class="relative h-96 group overflow-hidden rounded-[2rem] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h4 class="text-2xl font-bold">Apparel</h4>
+                        <p class="text-sm text-slate-300">340+ Items</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50 border-y">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex justify-between items-center mb-16">
+                    <h2 class="text-3xl font-black">Live Inventory Drop</h2>
+                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-xs font-black uppercase italic">Synced with physical stores</span>
+                </div>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-[2.5rem] p-4 border border-slate-200 group relative">
+                        <div class="aspect-square rounded-[2rem] bg-slate-100 overflow-hidden mb-6 relative">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold shadow-sm">STOCK: <span id="client-stock">14</span></div>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Neo-Pulse Sneakers</h3>
+                        <p class="text-slate-400 text-xs mb-4 uppercase font-bold tracking-widest">Performance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-black text-blue-600">$185.00</span>
+                            <button onclick="simulatePurchase()" class="bg-slate-900 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition shadow-lg"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-white py-20 px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-20">
+                <div class="col-span-2">
+                    <span class="text-2xl font-black mb-6 block">NEXRETAIL</span>
+                    <p class="text-slate-400 max-w-sm mb-8 text-sm leading-relaxed">Pioneering the next generation of retail software. Bridging the gap between brick-and-mortar and digital commerce.</p>
+                    <div class="flex gap-4">
+                        <i class="fab fa-instagram text-xl"></i>
+                        <i class="fab fa-twitter text-xl"></i>
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Service</h5>
+                    <ul class="text-slate-400 space-y-4 text-sm">
+                        <li>Shipping & Returns</li>
+                        <li>Live Tracking</li>
+                        <li>Loyalty Program</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Office</h5>
+                    <p class="text-slate-400 text-sm">12 Fashion District,<br>New York, NY 10012</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <main id="admin-view" class="view-section">
+        <div class="flex h-[calc(100vh-44px)]">
+            <aside class="w-72 bg-white border-r p-8 hidden lg:flex flex-col">
+                <div class="flex items-center gap-3 mb-12">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white"><i class="fas fa-terminal text-sm"></i></div>
+                    <div><p class="font-bold text-sm leading-tight">Admin Console</p><p class="text-[10px] text-slate-400">Ver 2.4 Active</p></div>
+                </div>
+                <nav class="space-y-2 flex-1">
+                    <a href="#" class="flex items-center gap-4 bg-slate-900 text-white p-4 rounded-2xl font-bold"><i class="fas fa-grid-2"></i> Dashboard</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:bg-slate-50 p-4 rounded-2xl transition"><i class="fas fa-shopping-bag"></i> Orders</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:bg-slate-50 p-4 rounded-2xl transition"><i class="fas fa-box"></i> Inventory</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:bg-slate-50 p-4 rounded-2xl transition"><i class="fas fa-percent"></i> Marketing</a>
+                </nav>
+            </aside>
+
+            <div class="flex-1 overflow-y-auto bg-slate-50 p-8 md:p-12">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl font-black">Store Operations</h2>
+                    <div class="flex gap-3">
+                        <button onclick="triggerDiscount()" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-xl shadow-blue-200">New Promotion</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Today's Revenue</p>
+                        <h4 class="text-2xl font-black text-slate-900">$12,450.00</h4>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Active Visitors</p>
+                        <h4 class="text-2xl font-black text-blue-600">342</h4>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Inventory Alert</p>
+                        <h4 class="text-2xl font-black text-red-500">2 Items Low</h4>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-3xl text-white">
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Loyalty Signups</p>
+                        <h4 class="text-2xl font-black text-white">1,204</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2.5rem] border p-10 mb-8 shadow-sm">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-black text-xl">Quick Stock Manager</h3>
+                        <p class="text-xs text-slate-400">Updates all online & offline endpoints instantly.</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100 gap-6">
+                        <div class="flex items-center gap-6">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=200" class="w-20 h-20 rounded-2xl object-cover shadow-lg">
+                            <div>
+                                <h4 class="font-bold text-lg">Neo-Pulse Sneakers</h4>
+                                <p class="text-xs text-slate-400 font-bold tracking-widest uppercase">SKU: NP-2025-RED</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right"><p class="text-[10px] font-bold text-slate-400 uppercase">Live Stock</p><p class="text-3xl font-black text-slate-900" id="admin-stock">14</p></div>
+                            <div class="flex gap-2">
+                                <button onclick="adjustStock(-1)" class="w-12 h-12 bg-white rounded-2xl border flex items-center justify-center font-bold text-xl hover:bg-slate-900 hover:text-white transition shadow-sm">-</button>
+                                <button onclick="adjustStock(1)" class="w-12 h-12 bg-white rounded-2xl border flex items-center justify-center font-bold text-xl hover:bg-slate-900 hover:text-white transition shadow-sm">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2.5rem] border border-slate-100 overflow-hidden">
+                    <div class="p-8 border-b bg-slate-50/50 flex justify-between items-center">
+                        <h3 class="font-black text-lg">Omni-Channel Sales Feed</h3>
+                        <i class="fas fa-sync-alt text-blue-600 animate-spin-slow"></i>
+                    </div>
+                    <div id="sales-feed" class="p-4 space-y-4">
+                        <div class="p-6 bg-slate-50 rounded-3xl flex justify-between items-center border border-transparent">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center"><i class="fas fa-store"></i></div>
+                                <div><p class="font-bold text-sm text-slate-800">In-Store Purchase</p><p class="text-xs text-slate-400">Mall Location (Terminal 2)</p></div>
+                            </div>
+                            <span class="font-bold text-slate-600">$185.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentStock = 14;
+
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(view + '-view').classList.add('active');
+            
+            // Update buttons
+            const isStore = view === 'store';
+            document.getElementById('btn-store').className = isStore ? 'text-xs font-bold bg-blue-600 px-4 py-1.5 rounded-full' : 'text-xs font-bold text-slate-400 px-4 py-1.5 rounded-full hover:text-white';
+            document.getElementById('btn-admin').className = !isStore ? 'text-xs font-bold bg-blue-600 px-4 py-1.5 rounded-full' : 'text-xs font-bold text-slate-400 px-4 py-1.5 rounded-full hover:text-white';
+            
+            window.scrollTo(0,0);
+        }
+
+        // Feature: Problem-Solving Inventory Sync
+        function adjustStock(amount) {
+            currentStock += amount;
+            if(currentStock < 0) currentStock = 0;
+            
+            // Sync Admin and Client displays
+            document.getElementById('admin-stock').innerText = currentStock;
+            document.getElementById('client-stock').innerText = currentStock;
+
+            // Visual feedback
+            const el = document.getElementById('client-stock');
+            el.classList.add('text-blue-600', 'scale-125');
+            setTimeout(() => el.classList.remove('text-blue-600', 'scale-125'), 300);
+        }
+
+        // Feature: Interactive Purchase
+        function simulatePurchase() {
+            if(currentStock <= 0) return alert("Out of stock!");
+            
+            alert("Order placed! Checking Admin for real-time update...");
+            adjustStock(-1);
+
+            // Add to Admin feed
+            const feed = document.getElementById('sales-feed');
+            const newSale = document.createElement('div');
+            newSale.className = "p-6 bg-blue-50 rounded-3xl flex justify-between items-center border border-blue-100 animate-bounce";
+            newSale.innerHTML = `
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-globe"></i></div>
+                    <div><p class="font-bold text-sm text-blue-900">Web Order Received</p><p class="text-xs text-blue-600">NexRetail-Global-Storefront</p></div>
+                </div>
+                <span class="font-black text-blue-600">$185.00</span>
+            `;
+            feed.prepend(newSale);
+            switchView('admin');
+            setTimeout(() => newSale.classList.remove('animate-bounce'), 2000);
+        }
+
+        function triggerDiscount() {
+            alert("Marketing Command: Pushing 20% discount code 'NEX20' to all active website sessions...");
+        }
+    </script>
+</body>
+</html>

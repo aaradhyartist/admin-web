@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysian Estates | Real Estate Management Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:italic@0,400;0,700&family=Montserrat:wght@300;400;600;800&display=swap');
+        
+        body { font-family: 'Montserrat', sans-serif; }
+        .font-serif { font-family: 'Libre Baskerville', serif; }
+        
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        .bg-emerald-900 { background-color: #064e3b; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-emerald-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-xl">
+        <div class="flex items-center gap-2">
+            <div class="bg-amber-500 p-1.5 rounded-sm rotate-45">
+                <i class="fas fa-key text-emerald-950 -rotate-45"></i>
+            </div>
+            <span class="font-semibold text-xl tracking-tighter">ELYSIAN <span class="text-amber-500 font-light">ESTATES</span></span>
+        </div>
+        <div class="flex gap-3">
+            <button onclick="switchView('public')" class="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 rounded text-xs font-bold transition uppercase tracking-widest">Public Website</button>
+            <button onclick="switchView('admin')" class="bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded text-xs font-bold text-emerald-950 transition uppercase tracking-widest">Agent CRM</button>
+        </div>
+    </nav>
+
+    <main id="public-view" class="view-section active">
+        <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-emerald-950/40 z-10"></div>
+            <div class="relative z-20 text-center text-white px-6">
+                <h1 class="font-serif text-5xl md:text-7xl mb-6">Find Your <span class="italic">Legacy.</span></h1>
+                <p class="text-lg md:text-xl font-light mb-10 tracking-widest uppercase">Exquisite Homes. Unrivaled Expertise.</p>
+                
+                <div class="bg-white/95 backdrop-blur p-2 rounded-lg shadow-2xl flex flex-col md:flex-row gap-2 max-w-4xl mx-auto">
+                    <input type="text" placeholder="Location, ZIP, or Neighborhood" class="flex-1 p-4 text-slate-800 outline-none">
+                    <select class="p-4 text-slate-500 border-l border-slate-200">
+                        <option>Price Range</option>
+                        <option>$500k - $1M</option>
+                        <option>$1M - $5M</option>
+                    </select>
+                    <button class="bg-emerald-900 text-white px-10 py-4 rounded font-bold hover:bg-emerald-800 transition">SEARCH</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-24 max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <span class="text-amber-600 font-bold uppercase tracking-widest text-xs">Curated Portfolio</span>
+                    <h2 class="text-4xl font-serif mt-2">Featured Properties</h2>
+                </div>
+                <a href="#" class="text-emerald-900 font-bold border-b-2 border-emerald-900 pb-1">View All Collection</a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white group rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-emerald-900 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">For Sale</div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 font-bold text-emerald-900">$2,450,000</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">The Glass Pavilion</h3>
+                        <p class="text-slate-400 text-sm mb-6"><i class="fas fa-map-marker-alt mr-2"></i>Malibu, California</p>
+                        <div class="flex gap-6 border-t pt-6 text-slate-500 text-sm">
+                            <span><i class="fas fa-bed mr-2 text-amber-600"></i>5</span>
+                            <span><i class="fas fa-bath mr-2 text-amber-600"></i>4</span>
+                            <span><i class="fas fa-vector-square mr-2 text-amber-600"></i>4,200 sqft</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white group rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-emerald-900 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">New Construction</div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 font-bold text-emerald-900">$1,890,000</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">Modernist Retreat</h3>
+                        <p class="text-slate-400 text-sm mb-6"><i class="fas fa-map-marker-alt mr-2"></i>Aspen, Colorado</p>
+                        <div class="flex gap-6 border-t pt-6 text-slate-500 text-sm">
+                            <span><i class="fas fa-bed mr-2 text-amber-600"></i>4</span>
+                            <span><i class="fas fa-bath mr-2 text-amber-600"></i>3</span>
+                            <span><i class="fas fa-vector-square mr-2 text-amber-600"></i>3,100 sqft</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-950 text-white rounded-xl p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-serif mb-6 leading-tight">Thinking of <span class="italic text-amber-500">selling</span> your estate?</h3>
+                    <p class="text-emerald-200/60 text-sm mb-10">Get a professional valuation and global exposure for your property.</p>
+                    <button onclick="alert('Valuation Request Sent!')" class="w-full bg-amber-500 text-emerald-950 font-bold py-4 rounded hover:bg-white transition uppercase text-xs tracking-widest">Request Valuation</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-emerald-950 text-white/40 py-16 border-t border-white/5 text-center text-xs tracking-[0.3em] uppercase">
+            <p>&copy; 2025 Elysian Estates Agency • Global Luxury Real Estate</p>
+        </footer>
+    </main>
+
+    <main id="admin-view" class="view-section">
+        <div class="flex h-[calc(100vh-72px)] overflow-hidden">
+            <aside class="w-72 bg-white border-r border-slate-200 p-8 hidden lg:flex flex-col">
+                <nav class="space-y-6 flex-1">
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Agent Tools</p>
+                    <a href="#" class="flex items-center gap-4 text-emerald-900 font-bold"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:text-emerald-900 transition"><i class="fas fa-home"></i> My Listings</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:text-emerald-900 transition"><i class="fas fa-user-friends"></i> Lead CRM</a>
+                    <a href="#" class="flex items-center gap-4 text-slate-400 hover:text-emerald-900 transition"><i class="fas fa-calendar-alt"></i> Showings</a>
+                </nav>
+                <div class="bg-slate-100 p-4 rounded-lg">
+                    <p class="text-xs font-bold text-slate-800">Agent: Sarah Jenkins</p>
+                    <p class="text-[10px] text-emerald-600 font-bold">Top Producer Oct 2024</p>
+                </div>
+            </aside>
+
+            <div class="flex-1 overflow-y-auto p-8 lg:p-12">
+                <div class="flex justify-between items-center mb-12">
+                    <h1 class="text-3xl font-bold">Pipeline Overview</h1>
+                    <button class="bg-emerald-900 text-white px-6 py-2 rounded font-bold text-sm shadow-lg">+ New Listing</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-xs font-bold uppercase mb-2">Total Inventory Value</p>
+                        <h3 class="text-4xl font-bold">$12.4M</h3>
+                        <p class="text-amber-600 text-[10px] font-bold mt-4 uppercase">8 Active Listings</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
+                        <p class="text-slate-400 text-xs font-bold uppercase mb-2">New Leads (24h)</p>
+                        <h3 class="text-4xl font-bold">14</h3>
+                        <p class="text-green-500 text-[10px] font-bold mt-4 uppercase"><i class="fas fa-caret-up"></i> High Interest</p>
+                    </div>
+                    <div class="bg-emerald-900 text-white p-8 rounded-xl shadow-lg">
+                        <p class="text-emerald-300 text-xs font-bold uppercase mb-2">Commission Projection</p>
+                        <h3 class="text-4xl font-bold">$310K</h3>
+                        <p class="text-emerald-300/60 text-[10px] font-bold mt-4 uppercase italic">Q4 Target: $400K</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b flex justify-between items-center">
+                        <h3 class="font-bold">Hot Inbound Leads</h3>
+                        <span class="text-xs text-slate-400">Syncing with Website...</span>
+                    </div>
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 text-[10px] text-slate-400 uppercase font-bold">
+                            <tr>
+                                <th class="px-8 py-4">Lead Source</th>
+                                <th class="px-8 py-4">Inquiry Property</th>
+                                <th class="px-8 py-4">Action</th>
+                                <th class="px-8 py-4 text-right">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-6">
+                                    <p class="font-bold">Michael Ross</p>
+                                    <p class="text-xs text-slate-400">Requested Valuation</p>
+                                </td>
+                                <td class="px-8 py-6 text-sm">The Glass Pavilion</td>
+                                <td class="px-8 py-6">
+                                    <button class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-[10px] font-bold">SEND E-BROCHURE</button>
+                                </td>
+                                <td class="px-8 py-6 text-right" id="lead-1">
+                                    <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase">Urgent</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-6">
+                                    <p class="font-bold">Linda K. (Broker)</p>
+                                    <p class="text-xs text-slate-400">Direct Message</p>
+                                </td>
+                                <td class="px-8 py-6 text-sm">Modernist Retreat</td>
+                                <td class="px-8 py-6">
+                                    <button class="bg-emerald-900 text-white px-3 py-1 rounded text-[10px] font-bold">SCHEDULE TOUR</button>
+                                </td>
+                                <td class="px-8 py-6 text-right" id="lead-2">
+                                    <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase">Contacted</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(view + '-view').classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>

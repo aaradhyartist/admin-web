@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BistroFlow Premium | Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <nav class="bg-slate-900 text-white p-4 flex flex-wrap justify-between items-center sticky top-0 z-50 shadow-xl">
+        <div class="flex items-center gap-2">
+            <div class="bg-amber-500 p-1.5 rounded-lg">
+                <i class="fas fa-utensils text-slate-900"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight">Bistro<span class="text-amber-500">Flow</span></span>
+        </div>
+        <div class="flex gap-3">
+            <button onclick="switchView('customer')" class="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 rounded-lg text-sm font-semibold transition">
+                <i class="fas fa-globe mr-2"></i>Customer Website
+            </button>
+            <button onclick="switchView('admin')" class="bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-lg text-sm font-bold text-slate-900 transition">
+                <i class="fas fa-user-shield mr-2"></i>Owner Dashboard
+            </button>
+        </div>
+    </nav>
+
+    <main id="customer-view" class="view-section active">
+        <section class="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
+            <div class="absolute inset-0 bg-black/60 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2070" class="absolute inset-0 w-full h-full object-cover scale-105 animate-pulse-slow">
+            <div class="relative z-20 px-6 max-w-3xl">
+                <span class="text-amber-400 font-bold uppercase tracking-widest text-sm">Fine Dining Excellence</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mt-4 mb-6 leading-tight">Flavor in Every Bite.</h1>
+                <p class="text-lg text-gray-200 mb-10 leading-relaxed">Experience a symphony of ingredients sourced from local farms, prepared by world-class chefs.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#menu" class="bg-amber-500 text-slate-900 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg">View Digital Menu</a>
+                    <a href="#book" class="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition">Reserve a Table</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-12 border-b">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div><p class="text-3xl font-bold text-amber-600">12k+</p><p class="text-sm text-gray-500 uppercase tracking-wide">Happy Clients</p></div>
+                <div><p class="text-3xl font-bold text-amber-600">45+</p><p class="text-sm text-gray-500 uppercase tracking-wide">Special Dishes</p></div>
+                <div><p class="text-3xl font-bold text-amber-600">10+</p><p class="text-sm text-gray-500 uppercase tracking-wide">Expert Chefs</p></div>
+                <div><p class="text-3xl font-bold text-amber-600">4.9/5</p><p class="text-sm text-gray-500 uppercase tracking-wide">Google Reviews</p></div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-24 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between items-end mb-16">
+                    <div>
+                        <h2 class="text-4xl font-bold text-slate-900">Our Specialties</h2>
+                        <div class="w-16 h-1.5 bg-amber-500 mt-4 rounded-full"></div>
+                    </div>
+                    <div class="hidden md:flex gap-4">
+                        <button class="px-4 py-2 rounded-full bg-slate-900 text-white font-medium">All</button>
+                        <button class="px-4 py-2 rounded-full bg-white text-gray-600 border hover:border-amber-500 transition">Main Course</button>
+                        <button class="px-4 py-2 rounded-full bg-white text-gray-600 border hover:border-amber-500 transition">Desserts</button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="bg-white group rounded-3xl shadow-sm border overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-amber-600">$24.00</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-2">Prime Rib Steak</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Slow-roasted for 12 hours, served with garlic mash and red wine reduction.</p>
+                            <button onclick="alert('Order Added!')" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-amber-500 transition">Order to Table</button>
+                        </div>
+                    </div>
+                    <div class="bg-white group rounded-3xl shadow-sm border overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-amber-600">$18.50</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-2">Mediterranean Pasta</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Handmade pasta with sun-dried tomatoes, olives, and feta cheese.</p>
+                            <button onclick="alert('Order Added!')" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-amber-500 transition">Order to Table</button>
+                        </div>
+                    </div>
+                    <div class="bg-white group rounded-3xl shadow-sm border overflow-hidden hover:shadow-2xl transition-all duration-300">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-amber-600">$9.00</div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-2">Glazed Doughnut Stack</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Triple-layered glazed doughnuts with vanilla bean cream and berries.</p>
+                            <button onclick="alert('Order Added!')" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-amber-500 transition">Order to Table</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-12 italic text-gray-700">"The best dining experience I've had in years. The digital ordering was so seamless!"</h2>
+                <div class="flex justify-center items-center gap-4">
+                    <img src="https://i.pravatar.cc/150?u=1" class="w-16 h-16 rounded-full border-2 border-amber-500">
+                    <div class="text-left">
+                        <p class="font-bold">David Richardson</p>
+                        <p class="text-sm text-gray-500">Food Critic, Daily Gourmet</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="book" class="py-24 bg-slate-900 text-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="bg-white text-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-12">
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-bold mb-4">Book Your Table</h2>
+                        <p class="text-gray-500 mb-8 text-sm">Fill out the form to reserve your spot. For parties larger than 8, please contact us directly.</p>
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Reservation Requested!');">
+                            <input type="text" placeholder="Full Name" class="w-full p-4 bg-gray-100 border-none rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="date" class="w-full p-4 bg-gray-100 border-none rounded-xl outline-none">
+                                <input type="time" class="w-full p-4 bg-gray-100 border-none rounded-xl outline-none">
+                            </div>
+                            <button class="w-full bg-amber-500 text-slate-900 py-4 rounded-xl font-bold text-lg hover:bg-amber-600 transition">Confirm Reservation</button>
+                        </form>
+                    </div>
+                    <div class="flex-1 bg-[url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=600')] bg-cover bg-center rounded-2xl min-h-[300px]"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="admin-view" class="view-section">
+        <div class="flex h-[calc(100vh-72px)] overflow-hidden">
+            <aside class="w-72 bg-white border-r hidden lg:flex flex-col p-6">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Management</p>
+                <nav class="space-y-2 flex-1">
+                    <a href="#" class="flex items-center gap-4 bg-amber-50 text-amber-600 p-3 rounded-xl font-bold">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-gray-500 hover:bg-gray-50 p-3 rounded-xl transition">
+                        <i class="fas fa-clipboard-list"></i> Orders <span class="ml-auto bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full">3 New</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-gray-500 hover:bg-gray-50 p-3 rounded-xl transition">
+                        <i class="fas fa-book-open"></i> Menu Editor
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-gray-500 hover:bg-gray-50 p-3 rounded-xl transition">
+                        <i class="fas fa-users"></i> Customers
+                    </a>
+                    <a href="#" class="flex items-center gap-4 text-gray-500 hover:bg-gray-50 p-3 rounded-xl transition">
+                        <i class="fas fa-chart-pie"></i> Analytics
+                    </a>
+                </nav>
+                <div class="bg-slate-900 rounded-2xl p-4 text-white">
+                    <p class="text-xs text-gray-400 mb-1">Current Shift</p>
+                    <p class="font-bold">Manager: Sarah K.</p>
+                </div>
+            </aside>
+
+            <div class="flex-1 overflow-y-auto bg-slate-50 p-6 md:p-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                    <div>
+                        <h1 class="text-3xl font-bold">Good Evening, Admin</h1>
+                        <p class="text-gray-500">Here's what's happening in your restaurant today.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="bg-white border p-3 rounded-xl shadow-sm hover:bg-gray-50"><i class="fas fa-bell"></i></button>
+                        <button class="bg-white border p-3 rounded-xl shadow-sm hover:bg-gray-50"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-dollar-sign text-xl"></i></div>
+                        <p class="text-gray-500 text-sm font-medium">Daily Revenue</p>
+                        <h3 class="text-3xl font-bold mt-1">$4,280.50</h3>
+                        <p class="text-green-500 text-xs mt-2 font-bold"><i class="fas fa-arrow-up"></i> +12% from yesterday</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-shopping-bag text-xl"></i></div>
+                        <p class="text-gray-500 text-sm font-medium">Total Orders</p>
+                        <h3 class="text-3xl font-bold mt-1">158</h3>
+                        <p class="text-blue-500 text-xs mt-2 font-bold"><i class="fas fa-arrow-up"></i> +5 new just now</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-clock text-xl"></i></div>
+                        <p class="text-gray-500 text-sm font-medium">Avg. Prep Time</p>
+                        <h3 class="text-3xl font-bold mt-1">18 min</h3>
+                        <p class="text-amber-500 text-xs mt-2 font-bold"><i class="fas fa-check"></i> Within target</p>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="p-6 border-b flex justify-between items-center">
+                            <h3 class="font-bold text-lg">Active Orders</h3>
+                            <button class="text-amber-600 text-sm font-bold">View All</button>
+                        </div>
+                        <div class="p-0">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50 text-[10px] uppercase text-gray-400 font-bold">
+                                    <tr>
+                                        <th class="px-6 py-4">Customer</th>
+                                        <th class="px-6 py-4">Status</th>
+                                        <th class="px-6 py-4 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4">
+                                            <p class="font-bold text-sm">Table #12</p>
+                                            <p class="text-xs text-gray-400">2x Rib Steak, 1x Pasta</p>
+                                        </td>
+                                        <td class="px-6 py-4" id="stat-12"><span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold">PREPARING</span></td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button onclick="updateStatusAdmin('12', 'COMPLETED')" class="text-xs bg-slate-900 text-white px-3 py-1.5 rounded-lg font-bold">Finish</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4">
+                                            <p class="font-bold text-sm">Alice Wong (Takeout)</p>
+                                            <p class="text-xs text-gray-400">1x Glazed Doughnut</p>
+                                        </td>
+                                        <td class="px-6 py-4" id="stat-15"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-[10px] font-bold">PENDING</span></td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button onclick="updateStatusAdmin('15', 'PREPARING')" class="text-xs bg-slate-900 text-white px-3 py-1.5 rounded-lg font-bold">Cook</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-100 p-6">
+                        <h3 class="font-bold text-lg mb-6">Quick Stock Management</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=50" class="w-10 h-10 rounded-lg object-cover">
+                                    <div>
+                                        <p class="font-bold text-sm">Prime Rib Steak</p>
+                                        <p class="text-[10px] text-gray-400">12 servings left</p>
+                                    </div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-amber-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&q=80&w=50" class="w-10 h-10 rounded-lg object-cover">
+                                    <div>
+                                        <p class="font-bold text-sm">Mediterranean Pasta</p>
+                                        <p class="text-[10px] text-red-500">Low Stock</p>
+                                    </div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" checked class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-amber-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                                </label>
+                            </div>
+                            <button class="w-full py-4 border-2 border-dashed border-gray-200 rounded-2xl text-gray-400 font-bold text-sm hover:border-amber-400 hover:text-amber-500 transition">
+                                <i class="fas fa-plus mr-2"></i> Add New Category
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-gray-400 py-12 text-center text-sm">
+        <div class="mb-6 flex justify-center gap-6">
+            <a href="#" class="hover:text-white transition">Instagram</a>
+            <a href="#" class="hover:text-white transition">Facebook</a>
+            <a href="#" class="hover:text-white transition">Twitter</a>
+        </div>
+        <p>&copy; 2024 BistroFlow Restaurant Demo System. Built for Sales Presentations.</p>
+    </footer>
+
+    <script>
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(view + '-view').classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function updateStatusAdmin(id, status) {
+            const el = document.getElementById('stat-' + id);
+            let colors = status === 'COMPLETED' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700';
+            el.innerHTML = `<span class="${colors} px-3 py-1 rounded-full text-[10px] font-bold animate-bounce">${status}</span>`;
+            
+            setTimeout(() => {
+                el.querySelector('span').classList.remove('animate-bounce');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
