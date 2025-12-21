@@ -4,8 +4,11 @@ import Pagination from '../components/Pagination';
 import toast from 'react-hot-toast';
 import DeleteModal from '../components/DeleteModal';
 import api from '../api';
+import { useEffect } from 'react';
+import { DateHelper } from '../utils/dateTimeHelper';
 
 const NewsletterAdminPage = () => {
+    const [isLoading, setIsLoading] = useState(false)
     const [selectedEmails, setSelectedEmails] = useState([]);
     const [formData, setFormData] = useState({
         subject: "",
@@ -15,16 +18,18 @@ const NewsletterAdminPage = () => {
     })
 
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 10;
-    const totalData = 100;
+    const [totalPages, setTotalPages] = useState(0)
+    const [totalData, setTotalData] = useState(0)
+
     const [isDeleting, setIsDeleting] = useState(false);
     const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: null });
-    const emails = Array.from({ length: 8 }, (_, i) => ({
-        id: i + 1,
-        email: `user${i + 1}@gmail.com`,
-        date: `2025-09-${(i % 30) + 1}`,
-        status: i % 2 === 0 ? 'Active' : 'Inactive'
-    }));
+    const [emails, setEmails] = useState([])
+    // const emails = Array.from({ length: 8 }, (_, i) => ({
+    //     id: i + 1,
+    //     email: `user${i + 1}@gmail.com`,
+    //     date: `2025-09-${(i % 30) + 1}`,
+    //     status: i % 2 === 0 ? 'Active' : 'Inactive'
+    // }));
 
     const toggleSelect = (email) => {
         setSelectedEmails((prev) =>
@@ -34,29 +39,49 @@ const NewsletterAdminPage = () => {
         );
     };
 
+    const fetchEmails = async () => {
+        try {
+            const { data } = await api.get(`/newsletter`)
+            setEmails(data?.results || [])
+            setTotalPages(data?.totalPages)
+            setTotalData(data?.total)
+        } catch (error) {
+            toast.error("Faild to Fetch Emails");
+            console.error(error);
+
+        }
+    }
+
+    useEffect(() => {
+        fetchEmails()
+    }, [])
+
     const handleDelete = async () => {
         try {
-            const res = await api.delete(`/newsletter/${deleteModal?.id}`)
-
+            const res = await api.delete(`/newsletter/permanent/${deleteModal?.id}`)
             toast.success("entry deleted")
-
+            setDeleteModal({ id: "", isOpen: false })
+            fetchEmails()
         } catch (error) {
             toast.error("faild to delete ")
         }
     };
 
     const handleSend = async (e) => {
-
         e.preventDefault()
+
         try {
             if ((selectedEmails.length === 0 && !formData.sendToAll) || !formData.subject) {
                 toast.error('Select users and fill subject/message');
                 return;
             }
-            const res = await api.post("/newsletter/sendmail", formData)
-            toast.success('Mail sent (demo)');
+            setIsLoading(true)
+            const res = await api.post("/newsletter/sendmail", { ...formData, emails: selectedEmails })
+            toast.success('Mail sent succefully');
         } catch (error) {
             toast.error("Faild to send email")
+        } finally {
+            setIsLoading(false)
         }
 
 
@@ -121,8 +146,8 @@ const NewsletterAdminPage = () => {
                                                 />
                                             </td>
                                             <td className="px-4 py-3">{item.email}</td>
-                                            <td className="px-4 py-3">{item.date}</td>
-                                            <td className="px-4 py-3">{item.status}</td>
+                                            <td className="px-4 py-3">{DateHelper(item?.createdAt)}</td>
+                                            <td className="px-4 py-3">{item?.isBlocked ? "Block" : "Active"}</td>
                                             <td className="px-4 py-3">
                                                 <button
                                                     onClick={() => { setDeleteModal({ id: item?._id, isOpen: true }) }}
@@ -211,7 +236,7 @@ const NewsletterAdminPage = () => {
                             onClick={handleSend}
                             className="w-full py-3 bg-[#31b8c6] text-white rounded-md mt-4 cursor-pointer hover:bg-slate-100 hover:text-slate-900 hover:border-1"
                         >
-                            Send Mail
+                            {isLoading ? "Sending..." : "Send mail"}
                         </button>
                     </div>
 
