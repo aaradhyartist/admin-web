@@ -32,14 +32,13 @@ export const authSlice = createSlice({
     },
     clearUser: (state) => {
       state.user = null;
-      state.token = null;
-      localStorage.setItem(
-        `${import.meta.env.VITE_APP_TOKEN_PREFICS}_refreshToken`,
-        ""
+      state.accessToken = null;
+      state.refreshToken = null;
+      localStorage.removeItem(
+        `${import.meta.env.VITE_APP_TOKEN_PREFICS}_refreshToken`
       );
-      localStorage.setItem(
-        `${import.meta.env.VITE_APP_TOKEN_PREFICS}_accessToken`,
-        ""
+      localStorage.removeItem(
+        `${import.meta.env.VITE_APP_TOKEN_PREFICS}_accessToken`
       );
     },
     setLoading: (state, action) => {

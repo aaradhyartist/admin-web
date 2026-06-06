@@ -83,12 +83,12 @@ const Inquiries = () => {
                                     key={item._id}
                                     onClick={() => handleSelectInquiry(item)}
                                     className={`mt-2 p-5 cursor-pointer transition-all border border-gray-200  rounded-lg ${selectedInquiry?._id === item._id
-                                        ? 'bg-[#31b8c6]/5 border-[#31b8c6]'
+                                        ? 'bg-[#DC2626]/5 border-[#DC2626]'
                                         : ' hover:bg-slate-50'
                                         }`}
                                 >
                                     <div className="flex justify-between items-start mb-1 ">
-                                        <h3 className={`text-sm font-bold ${selectedInquiry?._id === item._id ? 'text-[#31b8c6]' : 'text-slate-800'}`}>
+                                        <h3 className={`text-sm font-bold ${selectedInquiry?._id === item._id ? 'text-[#DC2626]' : 'text-slate-800'}`}>
                                             {item.name}
                                         </h3>
                                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
@@ -129,10 +129,10 @@ const Inquiries = () => {
                                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                                             {/* Email with Copy */}
                                             <div className="flex items-center gap-1.5 group">
-                                                <span className="text-xs font-medium text-[#31b8c6]">{selectedInquiry.email}</span>
+                                                <span className="text-xs font-medium text-[#DC2626]">{selectedInquiry.email}</span>
                                                 <button
                                                     onClick={() => handleCopy(selectedInquiry.email)}
-                                                    className="p-0.5 text-slate-300 hover:text-[#31b8c6] transition-colors"
+                                                    className="p-0.5 text-slate-300 hover:text-[#DC2626] transition-colors"
                                                 >
                                                     {copied ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} />}
                                                 </button>
@@ -155,7 +155,7 @@ const Inquiries = () => {
                                                         {/* Optional: Tiny copy button for mobile number */}
                                                         <button
                                                             onClick={() => handleCopy(selectedInquiry.mobile)}
-                                                            className="p-0.5 text-slate-300 hover:text-[#31b8c6] transition-colors"
+                                                            className="p-0.5 text-slate-300 hover:text-[#DC2626] transition-colors"
                                                             title="Copy Mobile"
                                                         >
                                                             {copied ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} className="opacity-0 group-hover:opacity-100" />}
@@ -209,7 +209,7 @@ const Inquiries = () => {
                             <div className="p-6 border-t border-slate-100 bg-white flex flex-col sm:flex-row gap-3 items-center justify-center">
                                 <a
                                     href={`mailto:${selectedInquiry.email}`}
-                                    className="w-full sm:w-auto bg-[#31b8c6] text-white px-8 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#28a1ad] transition-all shadow-lg shadow-[#31b8c6]/10"
+                                    className="w-full sm:w-auto bg-[#DC2626] text-white px-8 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#28a1ad] transition-all shadow-lg shadow-[#DC2626]/10"
                                 >
                                     <Reply size={18} /> Reply via Email
                                 </a>

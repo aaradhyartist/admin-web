@@ -24,10 +24,10 @@ const FloatingActionButtons = () => {
       <button
         onClick={scrollToTop}
         className={`hover:cursor-pointer
-          w-12 h-12 bg-slate-900 text-[#31b8c6] rounded-xl  border border-[#31b8c6]  
+          w-12 h-12 bg-slate-900 text-[#DC2626] rounded-xl  border border-[#DC2626]  
           shadow-xl flex items-center justify-center transition-all duration-500
           ${showTopBtn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
-          hover:bg-[#31b8c6] hover:text-white
+          hover:bg-[#DC2626] hover:text-white
         `}
       >
         <ArrowUp size={24} />

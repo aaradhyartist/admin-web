@@ -27,7 +27,7 @@ const ProcessSection = () => {
       subtitle: "Engineering Excellence",
       desc: "Our engineers build using modern stacks (React, Node, Cloud Native). We use test-driven development to ensure stability from day one.",
       icon: <Code2 size={24} />,
-      color: "bg-[#31b8c6]"
+      color: "bg-[#DC2626]"
     },
     {
       id: "04",
@@ -46,11 +46,11 @@ const ProcessSection = () => {
         {/* Heading Section */}
         <div className="flex flex-col mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-[2px] w-12 bg-[#31b8c6]"></div>
-            <span className="text-[#31b8c6] text-xs font-black uppercase tracking-[0.4em]">Efficiency</span>
+            <div className="h-[2px] w-12 bg-[#DC2626]"></div>
+            <span className="text-[#DC2626] text-xs font-black uppercase tracking-[0.4em]">Efficiency</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 uppercase">
-            A Better Way <br /> To <span className="text-[#31b8c6]">Build Software.</span>
+            A Better Way <br /> To <span className="text-[#DC2626]">Build Software.</span>
           </h2>
         </div>
 
@@ -69,7 +69,7 @@ const ProcessSection = () => {
                   : 'hover:bg-slate-50 text-slate-500'
                 }`}
               >
-                <span className={`text-sm font-mono ${activeStep === index ? 'text-[#31b8c6]' : 'text-slate-300'}`}>
+                <span className={`text-sm font-mono ${activeStep === index ? 'text-[#DC2626]' : 'text-slate-300'}`}>
                   {step.id}
                 </span>
                 <span className="font-bold uppercase tracking-tight text-lg leading-none">
@@ -87,11 +87,11 @@ const ProcessSection = () => {
             </div>
 
             <div className="relative z-10 animate-fadeIn">
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#31b8c6]/20 bg-[#31b8c6]`}>
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#DC2626]/20 bg-[#DC2626]`}>
                 {steps[activeStep].icon}
               </div>
               
-              <span className="text-[#31b8c6] font-black uppercase tracking-widest text-xs">
+              <span className="text-[#DC2626] font-black uppercase tracking-widest text-xs">
                 {steps[activeStep].subtitle}
               </span>
               
@@ -105,7 +105,7 @@ const ProcessSection = () => {
 
               <button className="mt-10 flex items-center gap-2 font-black text-slate-900 uppercase text-sm group">
                 Learn more about this phase 
-                <ArrowRight size={18} className="text-[#31b8c6] group-hover:translate-x-2 transition-transform" />
+                <ArrowRight size={18} className="text-[#DC2626] group-hover:translate-x-2 transition-transform" />
               </button>
             </div>
           </div>

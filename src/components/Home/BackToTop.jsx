@@ -34,8 +34,8 @@ const BackToTop = () => {
         className={`
           ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
           group flex items-center justify-center w-12 h-12 
-          bg-slate-900 text-[#31b8c6] rounded-xl border border-slate-800
-          hover:bg-[#31b8c6] hover:text-white hover:shadow-2xl hover:shadow-[#31b8c6]/40
+          bg-slate-900 text-[#DC2626] rounded-xl border border-slate-800
+          hover:bg-[#DC2626] hover:text-white hover:shadow-2xl hover:shadow-[#DC2626]/40
           transition-all duration-500 ease-in-out outline-none
         `}
         aria-label="Back to top"
@@ -46,7 +46,7 @@ const BackToTop = () => {
         />
         
         {/* Subtle Ring Animation */}
-        <span className="absolute inset-0 rounded-xl border-2 border-[#31b8c6] animate-ping opacity-20 group-hover:hidden"></span>
+        <span className="absolute inset-0 rounded-xl border-2 border-[#DC2626] animate-ping opacity-20 group-hover:hidden"></span>
       </button>
     </div>
   );

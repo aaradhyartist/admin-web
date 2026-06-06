@@ -36,11 +36,11 @@ const ProcessSection = () => {
         {/* Section Header */}
         <div className="flex flex-col mb-20">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-[2px] w-12 bg-[#31b8c6]"></div>
-            <span className="text-[#31b8c6] text-xs font-black uppercase tracking-[0.4em]">How We Work</span>
+            <div className="h-[2px] w-12 bg-[#DC2626]"></div>
+            <span className="text-[#DC2626] text-xs font-black uppercase tracking-[0.4em]">How We Work</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">
-            OUR STEP-BY-STEP <span className="text-[#31b8c6]">PROCESS.</span>
+            OUR STEP-BY-STEP <span className="text-[#DC2626]">PROCESS.</span>
           </h2>
         </div>
 
@@ -48,7 +48,7 @@ const ProcessSection = () => {
         <div className="relative">
           {/* Horizontal line behind steps */}
           <div className="hidden lg:block absolute top-10 left-[10%] right-[10%] h-[2px] bg-slate-100 z-0">
-            <div className="absolute top-0 left-0 h-full w-1/3 bg-[#31b8c6]/30"></div>
+            <div className="absolute top-0 left-0 h-full w-1/3 bg-[#DC2626]/30"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
@@ -57,17 +57,17 @@ const ProcessSection = () => {
                 
                 {/* Icon & Number */}
                 <div className="relative mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white border-2 flex items-center justify-center text-slate-400 border-[#31b8c6] group-hover:text-[#31b8c6] transition-all duration-500 shadow-xl shadow-slate-100 group-hover:shadow-[#31b8c6]/20 group-hover:-translate-y-2 relative z-10">
+                  <div className="w-20 h-20 rounded-full bg-white border-2 flex items-center justify-center text-slate-400 border-[#DC2626] group-hover:text-[#DC2626] transition-all duration-500 shadow-xl shadow-slate-100 group-hover:shadow-[#DC2626]/20 group-hover:-translate-y-2 relative z-10">
                     {step.icon}
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-slate-900 text-white text-[10px] font-black flex items-center justify-center border-2 border-white group-hover:bg-[#31b8c6] z-20">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-slate-900 text-white text-[10px] font-black flex items-center justify-center border-2 border-white group-hover:bg-[#DC2626] z-20">
                     {step.number}
                   </div>
                 </div>
 
                 {/* Text */}
                 <div className="text-center lg:text-left relative z-10 bg-white">
-                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-3 group-hover:text-[#31b8c6] transition-colors">
+                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-3 group-hover:text-[#DC2626] transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed font-medium lg:pr-4">

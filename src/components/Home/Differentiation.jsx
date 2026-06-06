@@ -23,7 +23,7 @@ const Differentiation = () => {
 
 
   return (
-    <section className="w-full bg-[#31b8c6] py-24 px-0 sm:px-6 md:px-12 lg:px-24 lg:py-32 overflow-hidden relative">
+    <section className="w-full bg-[#DC2626] py-24 px-0 sm:px-6 md:px-12 lg:px-24 lg:py-32 overflow-hidden relative">
       {/* Subtle Background Pattern to add texture to the cyan */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
 
@@ -48,7 +48,7 @@ const Differentiation = () => {
           <div className="lg:col-span-7 bg-slate-900 rounded-[3rem] p-10 lg:p-14 text-white flex flex-col justify-between group shadow-2xl">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-8 border border-white/10">
-                <Zap size={16} className="text-[#31b8c6]" />
+                <Zap size={16} className="text-[#DC2626]" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Performance Focus</span>
               </div>
               <h3 className="text-3xl font-bold mb-6">Reliable & Scalable Systems</h3>
@@ -58,7 +58,7 @@ const Differentiation = () => {
               <ul className="space-y-4">
                 {["Stable infrastructure", "Automatic error handling", "Smooth user experience"].map((text, i) => (
                   <li key={i} className="flex items-center gap-3 font-bold text-sm">
-                    <div className="w-5 h-5 rounded-full bg-[#31b8c6] flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-full bg-[#DC2626] flex items-center justify-center">
                       <Check size={12} className="text-white" />
                     </div>
                     {text}
@@ -77,7 +77,7 @@ const Differentiation = () => {
                 <h3 className="text-2xl font-black text-slate-900 mb-2">Faster Launches</h3>
                 <p className="text-slate-500 text-sm font-medium">Get your software live quicker with our proven development approach.</p>
               </div>
-              <div className="w-16 h-16 rounded-2xl bg-[#31b8c6]/10 flex items-center justify-center text-[#31b8c6]">
+              <div className="w-16 h-16 rounded-2xl bg-[#DC2626]/10 flex items-center justify-center text-[#DC2626]">
                 <Rocket size={32} />
               </div>
             </div>
@@ -86,7 +86,7 @@ const Differentiation = () => {
             <div className="bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 space-y-8 shadow-xl">
               {secondaryPoints.map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
-                  <div className="mt-1 text-[#31b8c6]">
+                  <div className="mt-1 text-[#DC2626]">
                     {item.icon}
                   </div>
                   <div>
@@ -103,7 +103,7 @@ const Differentiation = () => {
         {/* Final White-Button CTA */}
         <div className="mt-20 flex flex-col md:flex-row items-center justify-center gap-6">
            <p className="text-white font-bold">Ready to see how we can help?</p>
-           <Link to="/contact" className="px-10 py-5 bg-white text-[#31b8c6] rounded-2xl font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:bg-slate-900 hover:text-white transition-all flex items-center gap-3 group">
+           <Link to="/contact" className="px-10 py-5 bg-white text-[#DC2626] rounded-2xl font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:bg-slate-900 hover:text-white transition-all flex items-center gap-3 group">
              Get Your Proposal<ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
            </Link>
         </div>

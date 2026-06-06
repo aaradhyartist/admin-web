@@ -13,11 +13,11 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#31b8c6] rounded-xl flex items-center justify-center font-black text-slate-900">
+              <div className="w-10 h-10 bg-[#DC2626] rounded-xl flex items-center justify-center font-black text-slate-900">
                 AA
               </div>
               <span className="text-2xl font-black tracking-tighter text-white uppercase">
-                Aaradhy<span className="text-[#31b8c6]">Artist</span>
+                Aaradhy<span className="text-[#DC2626]">Artist</span>
               </span>
             </div>
 
@@ -39,7 +39,7 @@ const Footer = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-[#31b8c6] hover:text-slate-900 transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-[#DC2626] hover:text-slate-900 transition-all duration-300"
                 >
                   {item.icon}
                 </a>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-slate-400 hover:text-[#31b8c6] transition-colors"
+                    className="text-slate-400 hover:text-[#DC2626] transition-colors"
                   >
                     {item.label}
                   </a>
@@ -86,7 +86,7 @@ const Footer = () => {
               ]
                 .map((link) => (
                   <li key={link.label}>
-                    <Link to={link?.href} className="hover:text-[#31b8c6] transition-colors">{link.label}</Link>
+                    <Link to={link?.href} className="hover:text-[#DC2626] transition-colors">{link.label}</Link>
                   </li>
                 ))}
             </ul>
@@ -97,15 +97,15 @@ const Footer = () => {
             <h4 className="text-white font-black uppercase tracking-widest text-sm mb-8">Get In Touch</h4>
             <ul className="flex flex-col gap-6">
               <li className="flex items-start gap-4">
-                <MapPin size={20} className="text-[#31b8c6] shrink-0" />
+                <MapPin size={20} className="text-[#DC2626] shrink-0" />
                 <span className="text-sm font-medium">Palda Indore, Madhya Pradesh 452001 ,  india</span>
               </li>
               <li className="flex items-center gap-4">
-                <Mail size={20} className="text-[#31b8c6] shrink-0" />
+                <Mail size={20} className="text-[#DC2626] shrink-0" />
                 <span className="text-sm font-medium">{import.meta.env.VITE_APP_WORK_EMAIL}</span>
               </li>
               <li className="flex items-center gap-4">
-                <Phone size={20} className="text-[#31b8c6] shrink-0" />
+                <Phone size={20} className="text-[#DC2626] shrink-0" />
                 <span className="text-sm font-medium">+91 {import.meta.env.VITE_APP_MOBILE_NUMBER}</span>
               </li>
             </ul>

@@ -1,197 +1,256 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Inbox, Users, CalendarDays, Clock, ArrowRight, RefreshCw, Mail, TrendingUp } from 'lucide-react';
+import api from '../api';
+import TrendChart from '../components/TrendChart';
+
+const fmtDate = (d) =>
+  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const getInitial = (s = '') => s.trim().charAt(0).toUpperCase() || '?';
+
+// Bucket items by day for the last `days` days → [{ label, value }]
+const dailySeries = (items, days = 14) => {
+  const buckets = [];
+  const base = new Date();
+  base.setHours(0, 0, 0, 0);
+  for (let i = days - 1; i >= 0; i--) {
+    const day = new Date(base.getTime() - i * 86400000);
+    buckets.push({
+      key: day.getTime(),
+      label: day.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }),
+      value: 0,
+    });
+  }
+  items.forEach((it) => {
+    const d = new Date(it.createdAt);
+    d.setHours(0, 0, 0, 0);
+    const b = buckets.find((x) => x.key === d.getTime());
+    if (b) b.value += 1;
+  });
+  return buckets;
+};
 
 const Dashboard = () => {
-  // 1. Working State: Use state so the UI updates when you "Delete" or "Add"
-  const [projectList, setProjectList] = useState([
-    { id: 1, name: "E-commerce Platform", client: "Nexus Retail", progress: 75, status: "Active", date: "2024-05-01" },
-    { id: 2, name: "Brand Identity", client: "Solaris Co.", progress: 100, status: "Completed", date: "2024-04-15" },
-    { id: 3, name: "Portfolio Website", client: "Dr. Aris", progress: 30, status: "Active", date: "2024-05-10" },
-    { id: 4, name: "Mobile App", client: "TechFlow", progress: 10, status: "Active", date: "2024-05-12" },
-  ]);
+  const [loading, setLoading] = useState(true);
+  const [contacts, setContacts] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
+  const [stats, setStats] = useState({ totalContacts: 0, totalSubs: 0, week: 0, today: 0 });
+  const [contactSeries, setContactSeries] = useState([]);
+  const [subSeries, setSubSeries] = useState([]);
 
-  const [searchQuery, setSearchQuery] = useState("");
-  
-  // 2. Functional Toggles State
-  const [settings, setSettings] = useState({
-    maintenance: false,
-    registration: true,
-    apiAccess: true,
-  });
+  const load = async () => {
+    setLoading(true);
+    try {
+      const [c, n] = await Promise.all([
+        api.get('/contact?page=1&limit=100'),
+        api.get('/newsletter?page=1&limit=100'),
+      ]);
+      const cResults = c?.data?.results || [];
+      const nResults = n?.data?.results || [];
 
-  // 3. Filter Logic (Search functionality)
-  const filteredProjects = useMemo(() => {
-    return projectList.filter(p => 
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      p.client.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery, projectList]);
+      const DAY = 86400000;
+      const now = Date.now();
+      const startToday = new Date();
+      startToday.setHours(0, 0, 0, 0);
 
-  const toggleSetting = (key) => {
-    setSettings(prev => ({ ...prev, [key]: !prev[key] }));
-  };
+      const week = cResults.filter((i) => now - new Date(i.createdAt).getTime() <= 7 * DAY).length;
+      const today = cResults.filter((i) => new Date(i.createdAt) >= startToday).length;
 
-  const deleteProject = (id) => {
-    if(window.confirm("Are you sure you want to remove this project?")) {
-      setProjectList(prev => prev.filter(p => p.id !== id));
+      setContacts(cResults.slice(0, 6));
+      setSubscribers(nResults.slice(0, 6));
+      setContactSeries(dailySeries(cResults, 14));
+      setSubSeries(dailySeries(nResults, 14));
+      setStats({
+        totalContacts: c?.data?.total ?? cResults.length,
+        totalSubs: n?.data?.total ?? nResults.length,
+        week,
+        today,
+      });
+    } catch (err) {
+      console.error('Dashboard load failed:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    load();
+  }, []);
+
+  const statCards = [
+    { label: 'Total Inquiries', value: stats.totalContacts, icon: <Inbox size={22} /> },
+    { label: 'New This Week', value: stats.week, icon: <CalendarDays size={22} /> },
+    { label: 'Today', value: stats.today, icon: <Clock size={22} /> },
+    { label: 'Subscribers', value: stats.totalSubs, icon: <Users size={22} /> },
+  ];
+
   return (
-    <div className="p-4 md:p-8 bg-gray-50 min-h-screen font-sans">
-      
-      {/* HEADER SECTION */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Dashboard</h1>
-          <p className="text-gray-500 font-medium">Real-time project tracking & site control.</p>
+          <span className="text-[#DC2626] text-[10px] font-black uppercase tracking-[0.3em]">Overview</span>
+          <h1 className="text-3xl font-black text-white tracking-tight">Dashboard</h1>
+          <p className="text-slate-400 font-medium text-sm mt-1">Live contact &amp; newsletter activity.</p>
         </div>
-        
-        <div className="flex items-center gap-3">
-            {/* Search Input - Makes the dashboard functional */}
-            <div className="relative">
-                <input 
-                    type="text" 
-                    placeholder="Search projects..."
-                    className="pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#31b8c6] focus:outline-none w-64 transition-all"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <svg className="w-5 h-5 absolute left-3 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        <button
+          onClick={load}
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-slate-300 hover:text-white hover:border-[#DC2626]/50 transition-colors"
+        >
+          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} /> Refresh
+        </button>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {statCards.map((s, i) => (
+          <div
+            key={i}
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#DC2626]/40 transition-colors"
+          >
+            <div className="w-11 h-11 rounded-xl bg-[#DC2626]/10 text-[#DC2626] flex items-center justify-center mb-4">
+              {s.icon}
             </div>
-            <button className="bg-[#31b8c6] hover:bg-[#28a1ad] text-white px-6 py-2.5 rounded-xl font-bold shadow-lg shadow-[#31b8c6]/20 transition-all active:scale-95 whitespace-nowrap">
-            + New Project
-            </button>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{s.label}</p>
+            <h3 className="text-3xl font-black text-white mt-1">
+              {loading ? <span className="inline-block w-12 h-8 rounded bg-white/10 animate-pulse" /> : s.value}
+            </h3>
+          </div>
+        ))}
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-lg font-black text-white">Inquiries</h2>
+              <p className="text-xs text-slate-400 font-medium">Last 14 days</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-[#DC2626]/10 text-[#DC2626] flex items-center justify-center">
+              <TrendingUp size={18} />
+            </div>
+          </div>
+          {loading ? (
+            <div className="h-[200px] rounded-xl bg-white/5 animate-pulse" />
+          ) : (
+            <TrendChart data={contactSeries} color="#DC2626" />
+          )}
+        </div>
+
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-lg font-black text-white">Subscriber Growth</h2>
+              <p className="text-xs text-slate-400 font-medium">Last 14 days</p>
+            </div>
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+              <Users size={18} />
+            </div>
+          </div>
+          {loading ? (
+            <div className="h-[200px] rounded-xl bg-white/5 animate-pulse" />
+          ) : (
+            <TrendChart data={subSeries} color="#10b981" />
+          )}
         </div>
       </div>
 
-      {/* STATS SECTION */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        <StatCard label="Live Projects" value={projectList.length} color="bg-[#31b8c6]" />
-        <StatCard label="Completed" value={projectList.filter(p => p.progress === 100).length} color="bg-green-500" />
-        <StatCard label="Avg. Progress" value={Math.round(projectList.reduce((acc, curr) => acc + curr.progress, 0) / projectList.length) + "%"} color="bg-purple-500" />
-        <StatCard label="System Status" value="Optimal" color="bg-blue-500" />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        {/* PROJECTS TABLE */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-gray-50 flex justify-between items-center">
-            <h2 className="text-xl font-bold text-gray-800">Project Registry</h2>
-            <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded uppercase tracking-widest">
-                {filteredProjects.length} Entries
-            </span>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Recent Inquiries */}
+        <div className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+          <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+            <h2 className="text-lg font-black text-white">Recent Inquiries</h2>
+            <Link to="/contacts" className="text-xs font-bold text-[#DC2626] hover:underline flex items-center gap-1">
+              View all <ArrowRight size={14} />
+            </Link>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead className="bg-gray-50/50">
-                <tr>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase">Information</th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase">Progress</th>
-                  <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase text-right">Actions</th>
+
+          <div className="overflow-x-auto custom-scrollbar">
+            <table className="w-full min-w-[560px] text-left">
+              <thead>
+                <tr className="bg-white/5 border-b border-white/10">
+                  <th className="px-5 py-3 text-[11px] font-black text-slate-400 uppercase tracking-wider">Name</th>
+                  <th className="px-5 py-3 text-[11px] font-black text-slate-400 uppercase tracking-wider">Subject</th>
+                  <th className="px-5 py-3 text-[11px] font-black text-slate-400 uppercase tracking-wider text-right">Date</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
-                {filteredProjects.map((project) => (
-                  <tr key={project.id} className="hover:bg-gray-50/50 transition-colors group">
-                    <td className="px-6 py-5">
-                      <div className="font-bold text-gray-800 group-hover:text-[#31b8c6] transition-colors">{project.name}</div>
-                      <div className="text-xs text-gray-400 font-medium italic">{project.client}</div>
-                    </td>
-                    <td className="px-6 py-5">
-                      <div className="flex items-center gap-3">
-                        <div className="w-full bg-gray-100 h-2 rounded-full max-w-[120px]">
-                          <div 
-                            className="bg-[#31b8c6] h-2 rounded-full transition-all duration-700" 
-                            style={{ width: `${project.progress}%` }}
-                          ></div>
+              <tbody className="divide-y divide-white/10">
+                {loading ? (
+                  [...Array(5)].map((_, i) => (
+                    <tr key={i}><td colSpan={3} className="px-5 py-3"><div className="h-7 rounded bg-white/5 animate-pulse" /></td></tr>
+                  ))
+                ) : contacts.length ? (
+                  contacts.map((item) => (
+                    <tr key={item._id} className="hover:bg-white/5 transition-colors">
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-[#DC2626]/10 text-[#DC2626] font-black text-xs flex items-center justify-center shrink-0">
+                            {getInitial(item.name)}
+                          </div>
+                          <div className="min-w-0">
+                            <p className="font-bold text-white truncate">{item.name}</p>
+                            <p className="text-xs text-slate-400 truncate">{item.email}</p>
+                          </div>
                         </div>
-                        <span className="text-xs font-bold text-gray-600">{project.progress}%</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-5 text-right space-x-3">
-                      <button className="text-[#31b8c6] font-bold text-sm hover:underline">Edit</button>
-                      <button 
-                        onClick={() => deleteProject(project.id)}
-                        className="text-red-400 font-bold text-sm hover:text-red-600">
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="px-5 py-4">
+                        {item.subject ? (
+                          <span className="text-xs font-bold text-[#DC2626] bg-[#DC2626]/10 px-2.5 py-1 rounded-full">{item.subject}</span>
+                        ) : <span className="text-slate-500 text-sm">—</span>}
+                      </td>
+                      <td className="px-5 py-4 text-sm text-slate-400 whitespace-nowrap text-right">{fmtDate(item.createdAt)}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr><td colSpan={3}>
+                    <div className="flex flex-col items-center justify-center text-center py-14 text-slate-500">
+                      <Inbox size={36} className="mb-3 text-slate-600" />
+                      <p className="font-bold text-slate-300">No inquiries yet</p>
+                    </div>
+                  </td></tr>
+                )}
               </tbody>
             </table>
-            {filteredProjects.length === 0 && (
-                <div className="p-10 text-center text-gray-400">No projects found matching your search.</div>
-            )}
           </div>
         </div>
 
-        {/* CONTROLS SIDEBAR */}
-        <div className="space-y-6">
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-            <h3 className="font-bold text-gray-800 text-lg mb-4">Site Controls</h3>
-            <div className="space-y-4">
-              <ControlToggle 
-                label="Maintenance Mode" 
-                active={settings.maintenance} 
-                onToggle={() => toggleSetting('maintenance')}
-              />
-              <ControlToggle 
-                label="Allow New Clients" 
-                active={settings.registration} 
-                onToggle={() => toggleSetting('registration')}
-              />
-              <ControlToggle 
-                label="API Public Access" 
-                active={settings.apiAccess} 
-                onToggle={() => toggleSetting('apiAccess')}
-              />
-              <button className="w-full py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-black transition-colors shadow-lg shadow-gray-200">
-                Deploy Changes
-              </button>
-            </div>
+        {/* Recent Subscribers */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
+          <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+            <h2 className="text-lg font-black text-white">Recent Subscribers</h2>
+            <Link to="/newsletter" className="text-xs font-bold text-[#DC2626] hover:underline flex items-center gap-1">
+              All <ArrowRight size={14} />
+            </Link>
           </div>
-
-          {/* HEALTH INDICATOR */}
-          <div className="bg-[#31b8c6]/5 p-6 rounded-2xl border border-[#31b8c6]/20 relative overflow-hidden">
-            <div className="relative z-10">
-                <h3 className="font-bold text-[#31b8c6] text-lg">Infrastructure</h3>
-                <p className="text-sm text-[#31b8c6]/70 mt-1 font-medium italic">Latency: 24ms (Excellent)</p>
-                <div className="mt-4 flex items-center gap-2">
-                    <span className="relative flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#31b8c6] opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[#31b8c6]"></span>
-                    </span>
-                    <span className="text-xs font-bold text-gray-500 uppercase tracking-tighter">Live Database Sync</span>
-                </div>
-            </div>
+          <div className="p-3 flex-1">
+            {loading ? (
+              <div className="space-y-2">{[...Array(5)].map((_, i) => <div key={i} className="h-12 rounded-xl bg-white/5 animate-pulse" />)}</div>
+            ) : subscribers.length ? (
+              <div className="space-y-1">
+                {subscribers.map((s) => (
+                  <div key={s._id} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
+                    <div className="w-9 h-9 rounded-full bg-[#DC2626]/10 text-[#DC2626] flex items-center justify-center shrink-0">
+                      <Mail size={15} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium text-white truncate">{s.email}</p>
+                      <p className="text-[11px] text-slate-500">{fmtDate(s.createdAt)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center text-center py-14 text-slate-500">
+                <Users size={36} className="mb-3 text-slate-600" />
+                <p className="font-bold text-slate-300">No subscribers yet</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-// Reusable Components
-const StatCard = ({ label, value, color }) => (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:border-[#31b8c6]/30 transition-all cursor-default group">
-        <p className="text-sm font-bold text-gray-400 uppercase tracking-wider group-hover:text-[#31b8c6]">{label}</p>
-        <h3 className="text-3xl font-black text-gray-800 mt-2">{value}</h3>
-        <div className={`h-1 w-12 mt-4 rounded-full ${color}`}></div>
-    </div>
-);
-
-const ControlToggle = ({ label, active, onToggle }) => (
-  <div className="flex items-center justify-between p-3.5 rounded-xl bg-gray-50 border border-gray-100 group">
-    <span className="text-sm font-bold text-gray-600">{label}</span>
-    <div 
-      onClick={onToggle}
-      className={`w-11 h-6 rounded-full relative cursor-pointer transition-all duration-300 shadow-inner ${active ? 'bg-[#31b8c6]' : 'bg-gray-300'}`}
-    >
-      <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all shadow-md ${active ? 'right-1' : 'left-1'}`}></div>
-    </div>
-  </div>
-);
 
 export default Dashboard;

@@ -37,17 +37,17 @@ const FullScaleHero = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
             {/* LEFT: Massive Text Content */}
             <div className="lg:col-span-8 lg:p-18">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#31b8c6]/10 border border-[#31b8c6]/20 text-[#31b8c6] text-xs font-bold tracking-[0.2em] uppercase mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DC2626]/10 border border-[#DC2626]/20 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase mb-8">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#31b8c6] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#31b8c6]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#DC2626] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#DC2626]"></span>
                 </span>
                 Smart Software. Real Results.
               </div>
 
               <h1 className="text-[12vw] lg:text-[8vw] font-black text-slate-900 leading-[0.85] tracking-tighter mb-10">
                 GROW YOUR <br />
-                <span className="text-[#31b8c6]">BUSSINESS.</span>
+                <span className="text-[#DC2626]">BUSSINESS.</span>
               </h1>
 
               <div className="flex flex-col md:flex-row gap-10 items-start">
@@ -56,11 +56,11 @@ const FullScaleHero = () => {
                 </p>
 
                 <div className="flex flex-col gap-4 ">
-                  <Link to="/contact" className="h-16 px-10 bg-[#31b8c6] hover:bg-slate-900 text-white text-xl font-bold rounded-2xl transition-all duration-300 flex items-center gap-4 shadow-2xl shadow-[#31b8c6]/40 group">
+                  <Link to="/contact" className="h-16 px-10 bg-[#DC2626] hover:bg-slate-900 text-white text-xl font-bold rounded-2xl transition-all duration-300 flex items-center gap-4 shadow-2xl shadow-[#DC2626]/40 group">
                     Start Project{" "}
                     <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </Link>
-                  {/* <button className="flex items-center gap-3 text-slate-900 font-bold hover:text-[#31b8c6] transition-colors ml-2">
+                  {/* <button className="flex items-center gap-3 text-slate-900 font-bold hover:text-[#DC2626] transition-colors ml-2">
                     <span className="w-10 h-10 rounded-full border-2 border-slate-200 flex items-center justify-center">
                       <Play size={16} fill="currentColor" />
                     </span>
@@ -75,7 +75,7 @@ const FullScaleHero = () => {
               <div className="grid grid-cols-1 gap-6">
                 {/* Feature Card 1 */}
                 <div className="bg-white/60 backdrop-blur-xl border border-gray-100 p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/50 hover:scale-105 transition-transform duration-500">
-                  <div className="w-14 h-14 bg-[#31b8c6] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#31b8c6]/30">
+                  <div className="w-14 h-14 bg-[#DC2626] rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-[#DC2626]/30">
                     <Globe size={28} />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">
@@ -89,16 +89,16 @@ const FullScaleHero = () => {
                 {/* Feature Card 2 - Visual Link */}
                 <div className="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl group cursor-pointer overflow-hidden relative">
                   <div className="relative z-10">
-                    <GitBranch className="text-[#31b8c6] mb-6" size={40} />
+                    <GitBranch className="text-[#DC2626] mb-6" size={40} />
                     <h3 className="text-2xl font-bold text-white mb-2">
                       Backend & API Systems
                     </h3>
-                    <div className="flex items-center gap-2 text-[#31b8c6] font-bold text-sm uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[#DC2626] font-bold text-sm uppercase tracking-widest">
                   <Link to={"/service"} className="flex"> View Services <ArrowUpRight size={16} /></Link>
                     </div>
                   </div>
                   {/* Decorative circle in card */}
-                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#31b8c6]/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#DC2626]/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@ const FullScaleHero = () => {
           <span className="text-[10px] font-black tracking-[0.3em] text-slate-400 uppercase">
             Scroll
           </span>
-          <div className="w-[2px] h-12 bg-gradient-to-b from-[#31b8c6] to-transparent rounded-full relative overflow-hidden">
+          <div className="w-[2px] h-12 bg-gradient-to-b from-[#DC2626] to-transparent rounded-full relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-scroll-move"></div>
           </div>
         </div>

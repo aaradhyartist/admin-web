@@ -36,11 +36,11 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center gap-2">
             <Link to={"/"} className='lex-shrink-0 flex items-center gap-2'>
-             <div className="w-10 h-10 bg-[#31b8c6] rounded-xl flex items-center justify-center font-black text-slate-100">
+             <div className="w-10 h-10 bg-[#DC2626] rounded-xl flex items-center justify-center font-black text-slate-100">
                AA
               </div>
             <span className="text-2xl font-black text-slate-900 tracking-tighter uppercase">
-              {"Aaradhy" || import.meta.env.VITE_APP_NAME}<span className="text-[#31b8c6]">Artist</span>
+              {"Aaradhy" || import.meta.env.VITE_APP_NAME}<span className="text-[#DC2626]">Artist</span>
             </span>
             </Link>
           </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
                 to={link.href}
                 className={({ isActive }) =>
                   `text-sm font-bold uppercase tracking-widest transition-colors
-      ${isActive ? 'text-[#31b8c6]' : 'text-slate-600 hover:text-[#31b8c6]'}`
+      ${isActive ? 'text-[#DC2626]' : 'text-slate-600 hover:text-[#DC2626]'}`
                 }
               >
                 {link.name}
@@ -65,7 +65,7 @@ const Navbar = () => {
           {/* Desktop Call to Action */}
           <div className="hidden md:flex items-center gap-4">
             {/* <button className="text-sm font-bold text-slate-900 px-4">Login</button> */}
-            <Link to="/contact" className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-[#31b8c6] transition-all duration-300">
+            <Link to="/contact" className="bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-[#DC2626] transition-all duration-300">
               Contact <ArrowRight size={16} />
             </Link>
           </div>
@@ -95,8 +95,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `px-4 py-3 text-lg font-bold rounded-xl transition-all
       ${isActive
-                    ? 'text-[#31b8c6] bg-slate-50'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-[#31b8c6]'}`
+                    ? 'text-[#DC2626] bg-slate-50'
+                    : 'text-slate-700 hover:bg-slate-50 hover:text-[#DC2626]'}`
                 }
               >
                 {link.name}
@@ -104,8 +104,8 @@ const Navbar = () => {
             ))}
 
             <div className="h-[1px] bg-slate-100 my-2"></div>
-            {/* <button className="w-full py-4 text-[#31b8c6] font-bold">Login</button> */}
-            <Link to={"/contact"} className="w-full px-5 py-4 bg-[#31b8c6] text-white rounded-xl font-bold shadow-lg shadow-[#31b8c6]/20">
+            {/* <button className="w-full py-4 text-[#DC2626] font-bold">Login</button> */}
+            <Link to={"/contact"} className="w-full px-5 py-4 bg-[#DC2626] text-white rounded-xl font-bold shadow-lg shadow-[#DC2626]/20">
               Contact
             </Link>
           </div>

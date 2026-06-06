@@ -5,6 +5,10 @@ import {
   Settings as SettingsIcon,
   Save,
   ChevronDown,
+  Lock,
+  Eye,
+  EyeOff,
+  Loader2,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../api';
@@ -28,6 +32,35 @@ const Settings = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // ---- Security / change password ----
+  const [pwd, setPwd] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' });
+  const [showPwd, setShowPwd] = useState({ current: false, next: false, confirm: false });
+  const [changingPwd, setChangingPwd] = useState(false);
+
+  const handlePwdChange = (e) => {
+    const { name, value } = e.target;
+    setPwd((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if (pwd.newPassword.length < 6) return toast.error('New password must be at least 6 characters');
+    if (pwd.newPassword !== pwd.confirmPassword) return toast.error('Passwords do not match');
+    setChangingPwd(true);
+    try {
+      await api.put('/auth/change-password', {
+        currentPassword: pwd.currentPassword,
+        newPassword: pwd.newPassword,
+      });
+      toast.success('Password changed successfully');
+      setPwd({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Failed to change password');
+    } finally {
+      setChangingPwd(false);
+    }
   };
 
   useEffect(() => {
@@ -61,6 +94,7 @@ const Settings = () => {
     { id: 'footer', label: 'Footer', icon: <Layout size={16} /> },
     { id: 'social', label: 'Social Links', icon: <Globe size={16} /> },
     { id: 'general', label: 'Identity', icon: <SettingsIcon size={16} /> },
+    { id: 'security', label: 'Security', icon: <Lock size={16} /> },
   ];
 
   return (
@@ -70,14 +104,14 @@ const Settings = () => {
 
         {/* Header */}
         <div>
-          <h1 className="text-2xl font-semibold text-slate-800">Settings</h1>
-          <p className="text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold text-white">Settings</h1>
+          <p className="text-sm text-slate-400">
             Manage platform configuration and branding
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 bg-white border border-slate-200 rounded-lg p-1 w-fit">
+        <div className="flex gap-2 bg-white/5 border border-white/10 rounded-lg p-1 w-fit">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -85,8 +119,8 @@ const Settings = () => {
               className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md transition cursor-pointer
                 ${
                   activeTab === tab.id
-                    ? 'bg-[#31b8c6] text-white'
-                    : 'text-slate-600 hover:bg-slate-100'
+                    ? 'bg-[#DC2626] text-white'
+                    : 'text-slate-300 hover:bg-white/10'
                 }`}
             >
               {tab.icon}
@@ -95,10 +129,64 @@ const Settings = () => {
           ))}
         </div>
 
+        {/* Security panel */}
+        {activeTab === 'security' && (
+          <form
+            onSubmit={handleChangePassword}
+            className="bg-white/5 border border-white/10 rounded-xl w-full max-w-xl"
+          >
+            <div className="p-8">
+              <SectionBlock title="Change Password">
+                <div className="space-y-6">
+                  <Field label="Current Password">
+                    <PasswordInput
+                      name="currentPassword"
+                      value={pwd.currentPassword}
+                      onChange={handlePwdChange}
+                      show={showPwd.current}
+                      onToggle={() => setShowPwd((s) => ({ ...s, current: !s.current }))}
+                    />
+                  </Field>
+                  <Field label="New Password">
+                    <PasswordInput
+                      name="newPassword"
+                      value={pwd.newPassword}
+                      onChange={handlePwdChange}
+                      show={showPwd.next}
+                      onToggle={() => setShowPwd((s) => ({ ...s, next: !s.next }))}
+                    />
+                    <p className="text-xs text-slate-500 mt-1">Minimum 6 characters.</p>
+                  </Field>
+                  <Field label="Confirm New Password">
+                    <PasswordInput
+                      name="confirmPassword"
+                      value={pwd.confirmPassword}
+                      onChange={handlePwdChange}
+                      show={showPwd.confirm}
+                      onToggle={() => setShowPwd((s) => ({ ...s, confirm: !s.confirm }))}
+                    />
+                  </Field>
+                </div>
+              </SectionBlock>
+            </div>
+            <div className="flex justify-end gap-3 px-8 py-4 border-t border-white/10 bg-white/5 rounded-b-xl">
+              <button
+                type="submit"
+                disabled={changingPwd || !pwd.currentPassword || !pwd.newPassword}
+                className="inline-flex items-center gap-2 px-6 py-2 text-sm bg-[#DC2626] text-white rounded-lg font-medium disabled:opacity-50 hover:cursor-pointer"
+              >
+                {changingPwd ? <Loader2 size={15} className="animate-spin" /> : <Lock size={15} />}
+                {changingPwd ? 'Updating…' : 'Update Password'}
+              </button>
+            </div>
+          </form>
+        )}
+
         {/* Main Card */}
+        {activeTab !== 'security' && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white border border-slate-200 rounded-xl w-full"
+          className="bg-white/5 border border-white/10 rounded-xl w-full"
         >
           <div className="p-8 space-y-10">
 
@@ -129,7 +217,7 @@ const Settings = () => {
                     value={formData.footerDescription}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full border border-slate-300 rounded-lg p-4 text-sm resize-none focus:outline-none focus:border-[#31b8c6]"
+                    className="w-full border border-white/10 rounded-lg p-4 text-sm resize-none focus:outline-none focus:border-[#DC2626]"
                   />
                 </Field>
               </SectionBlock>
@@ -169,7 +257,7 @@ const Settings = () => {
                         name="language"
                         value={formData.language}
                         onChange={handleChange}
-                        className="w-full h-11 border border-slate-300 rounded-lg px-4 text-sm appearance-none focus:outline-none focus:border-[#31b8c6]"
+                        className="w-full h-11 border border-white/10 rounded-lg px-4 text-sm appearance-none focus:outline-none focus:border-[#DC2626]"
                       >
                         <option value="English (United States)">English (US)</option>
                         <option value="Spanish">Spanish</option>
@@ -187,11 +275,11 @@ const Settings = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex justify-end gap-3 px-8 py-4 border-t border-slate-200 bg-slate-50 rounded-b-xl bg-white">
+          <div className="flex justify-end gap-3 px-8 py-4 border-t border-white/10 bg-white/5 rounded-b-xl bg-white/5">
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="px-5 py-2 text-sm border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-100 hover:cursor-pointer"
+              className="px-5 py-2 text-sm border border-white/10 rounded-lg text-slate-300 hover:bg-white/10 hover:cursor-pointer"
             >
               Discard
             </button>
@@ -199,12 +287,13 @@ const Settings = () => {
             <button
               type="submit"
               disabled={isSaving}
-              className="px-6 py-2 text-sm bg-[#31b8c6] text-white rounded-lg font-medium disabled:opacity-50 hover:cursor-pointer"
+              className="px-6 py-2 text-sm bg-[#DC2626] text-white rounded-lg font-medium disabled:opacity-50 hover:cursor-pointer"
             >
               {isSaving ? 'Saving…' : 'Save Changes'}
             </button>
           </div>
         </form>
+        )}
       </div>
     </div>
   );
@@ -214,7 +303,7 @@ const Settings = () => {
 
 const SectionBlock = ({ title, children }) => (
   <div className="space-y-6">
-    <h2 className="text-sm font-semibold text-slate-700 border-b border-slate-200 pb-2">
+    <h2 className="text-sm font-semibold text-slate-200 border-b border-white/10 pb-2">
       {title}
     </h2>
     {children}
@@ -223,7 +312,7 @@ const SectionBlock = ({ title, children }) => (
 
 const Field = ({ label, children }) => (
   <div className="space-y-1">
-    <label className="text-sm font-medium text-slate-700">{label}</label>
+    <label className="text-sm font-medium text-slate-200">{label}</label>
     {children}
   </div>
 );
@@ -234,8 +323,29 @@ const Input = ({ name, value, onChange }) => (
     name={name}
     value={value}
     onChange={onChange}
-    className="w-full h-11 border border-slate-300 rounded-lg px-4 text-sm focus:outline-none focus:border-[#31b8c6]"
+    className="w-full h-11 border border-white/10 rounded-lg px-4 text-sm focus:outline-none focus:border-[#DC2626]"
   />
+);
+
+const PasswordInput = ({ name, value, onChange, show, onToggle }) => (
+  <div className="relative">
+    <input
+      type={show ? 'text' : 'password'}
+      name={name}
+      value={value}
+      onChange={onChange}
+      autoComplete="off"
+      className="w-full h-11 border border-white/10 rounded-lg pl-4 pr-11 text-sm text-white focus:outline-none focus:border-[#DC2626]"
+    />
+    <button
+      type="button"
+      onClick={onToggle}
+      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+      tabIndex={-1}
+    >
+      {show ? <EyeOff size={16} /> : <Eye size={16} />}
+    </button>
+  </div>
 );
 
 export default Settings;

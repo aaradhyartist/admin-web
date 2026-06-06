@@ -1,9 +1,5 @@
-
 import {
   LayoutDashboard,
-  FolderKanban,
-  User,
-  Users,
   Settings,
   Contact,
   Newspaper,
@@ -16,35 +12,18 @@ export const NAV_ITEMS = [
     to: "/dashboard",
   },
   {
-    label: "Projects",
-    icon: FolderKanban,
-    children: [
-      { label: "All Projects", to: "/projects" },
-      { label: "Create Project", to: "/projects/create" },
-      { label: "Archived", to: "/projects/archived" },
-    ],
+    label: "Contacts",
+    icon: Contact,
+    to: "/contacts",
   },
   {
-    label: "Users",
-    icon: Users,
-    children: [
-      { label: "All Users", to: "/users" },
-      { label: "Roles", to: "/users/roles" },
-    ],
+    label: "Newsletter",
+    icon: Newspaper,
+    to: "/newsletter",
   },
   {
     label: "Settings",
     icon: Settings,
     to: "/settings",
-  },
-    {
-    label: "Contacts",
-    icon: Contact,
-    to: "/contacts",
-  },
-   {
-    label: "NewsLetter",
-    icon: Newspaper,
-    to: "/newsletter",
   },
 ];

@@ -45,14 +45,14 @@ const Services = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-[2px] bg-[#31b8c6]"></div>
-              <span className="text-[#31b8c6] text-[10px] font-black uppercase tracking-[0.3em]">Our Services</span>
+              <div className="w-8 h-[2px] bg-[#DC2626]"></div>
+              <span className="text-[#DC2626] text-[10px] font-black uppercase tracking-[0.3em]">Our Services</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
-              What We Build for Your <span className="text-[#31b8c6]"> Business.</span>
+              What We Build for Your <span className="text-[#DC2626]"> Business.</span>
             </h2>
           </div>
-          <Link to="/service" className="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-[#31b8c6] transition-colors flex items-center gap-2">
+          <Link to="/service" className="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-[#DC2626] transition-colors flex items-center gap-2">
             View All Services <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -62,12 +62,12 @@ const Services = () => {
           {modules.map((item, index) => (
             <div
               key={index}
-              className="group p-8 bg-slate-50 rounded-[2rem] border  border-gray-300 hover:border-[#31b8c6] hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 transition-all duration-300 flex flex-col justify-between min-h-[280px]"
+              className="group p-8 bg-slate-50 rounded-[2rem] border  border-gray-300 hover:border-[#DC2626] hover:bg-white hover:shadow-xl hover:shadow-slate-200/40 transition-all duration-300 flex flex-col justify-between min-h-[280px]"
             >
               <div>
                 {/* Header: Icon and Tag */}
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#31b8c6] shadow-sm group-hover:bg-[#31b8c6] group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#DC2626] shadow-sm group-hover:bg-[#DC2626] group-hover:text-white transition-all duration-300">
                     {item.icon}
                   </div>
                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-slate-100">
@@ -85,7 +85,7 @@ const Services = () => {
               </div>
 
               {/* Minimal Footer */}
-              <div className="mt-6 flex items-center gap-2 text-[#31b8c6] hover:cursor-pointer group-hover:opacity-100 transition-opacity">
+              <div className="mt-6 flex items-center gap-2 text-[#DC2626] hover:cursor-pointer group-hover:opacity-100 transition-opacity">
                 <span className="text-[15px] hover:text-gray-400 font-black uppercase tracking-tighter">Details</span>
                 <ArrowUpRight size={14} />
               </div>
@@ -98,12 +98,12 @@ const Services = () => {
               <h3 className="text-xl font-bold text-white mb-4">
                 Want a software solution that fits your business?
               </h3>
-              <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest bg-[#31b8c6] text-white px-5 py-3 rounded-xl hover:scale-105 transition-transform">
+              <Link to="/contact" className="text-[10px] font-black uppercase tracking-widest bg-[#DC2626] text-white px-5 py-3 rounded-xl hover:scale-105 transition-transform">
                 Contact Us
               </Link>
             </div>
             {/* Visual background element */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#31b8c6]/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#DC2626]/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
           </div>
 
         </div>

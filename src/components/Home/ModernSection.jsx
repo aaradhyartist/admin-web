@@ -12,21 +12,21 @@ const ModernHero = () => {
           className="w-full h-full object-cover"
         />
         {/* Dark to Light Gradient Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-[#31b8c6]/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-[#DC2626]/20"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-20">
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white text-sm font-medium mb-8 animate-fade-in">
-            <span className="flex h-2 w-2 rounded-full bg-[#31b8c6] animate-pulse"></span>
+            <span className="flex h-2 w-2 rounded-full bg-[#DC2626] animate-pulse"></span>
             Innovative Software for 2025
           </div>
 
           {/* Headline */}
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
             Innovate. Scale. <br />
-            <span className="text-[#31b8c6]">Transform.</span>
+            <span className="text-[#DC2626]">Transform.</span>
           </h1>
 
           {/* Description */}
@@ -37,7 +37,7 @@ const ModernHero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-5">
-            <button className="group px-8 py-4 bg-[#31b8c6] hover:bg-[#28a7b4] text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#31b8c6]/30">
+            <button className="group px-8 py-4 bg-[#DC2626] hover:bg-[#28a7b4] text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#DC2626]/30">
               Get Started 
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -49,11 +49,11 @@ const ModernHero = () => {
           {/* Features / Benefits */}
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="flex items-center gap-3 text-white/80">
-              <CheckCircle2 className="text-[#31b8c6]" size={24} />
+              <CheckCircle2 className="text-[#DC2626]" size={24} />
               <span className="text-lg font-medium">Enterprise Security</span>
             </div>
             <div className="flex items-center gap-3 text-white/80">
-              <CheckCircle2 className="text-[#31b8c6]" size={24} />
+              <CheckCircle2 className="text-[#DC2626]" size={24} />
               <span className="text-lg font-medium">High Performance</span>
             </div>
           </div>

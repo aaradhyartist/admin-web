@@ -15,13 +15,13 @@ const TrustSection = () => {
           {/* LEFT: Heading Content (Spans 7 columns) */}
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-[2px] w-12 bg-[#31b8c6]"></div>
-              <span className="text-[#31b8c6] text-xs font-black uppercase tracking-[0.4em]">Working With Businesses</span>
+              <div className="h-[2px] w-12 bg-[#DC2626]"></div>
+              <span className="text-[#DC2626] text-xs font-black uppercase tracking-[0.4em]">Working With Businesses</span>
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 leading-[1] tracking-tighter uppercase">
               TRUSTED BY<span className="text-slate-300"> Growing</span> <br />
-               <span className="text-[#31b8c6]">Businesses.</span>
+               <span className="text-[#DC2626]">Businesses.</span>
             </h2>
           </div>
 
@@ -34,9 +34,9 @@ const TrustSection = () => {
             ].map((badge, i) => (
               <div 
                 key={i} 
-                className="flex items-center gap-4 p-5 md:p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-all hover:border-[#31b8c6]/30 group"
+                className="flex items-center gap-4 p-5 md:p-6 bg-slate-50 rounded-2xl border border-slate-100 transition-all hover:border-[#DC2626]/30 group"
               >
-                <span className="text-[#31b8c6] group-hover:scale-110 transition-transform">{badge.icon}</span>
+                <span className="text-[#DC2626] group-hover:scale-110 transition-transform">{badge.icon}</span>
                 <span className="font-bold text-slate-700 uppercase tracking-tight text-sm md:text-base">
                   {badge.text}
                 </span>
